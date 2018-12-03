@@ -5,7 +5,7 @@ class ChoiceinLine(admin.TabularInline):
     extra = 0
 class QuestionAdmin(admin.ModelAdmin):
     fieldsets = [
-            (None,               {'fields': ['question_text']}),
+            (None,{'fields': ['question_text','score']}),
             ('Categoria', {'fields': ['cat']})
                 ]
     inlines = [ChoiceinLine]
