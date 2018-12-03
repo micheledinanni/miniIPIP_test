@@ -1,0 +1,12 @@
+{% if  question_list%}
+    <ul>
+    {% for question in question_list %}
+        <li><a href="/myapp/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %}
+<div align="center">
+    <input type="button" value="Final evaluation" onclick="location.href='/myapp/evaluation/' "/>
+</div>
