@@ -22,6 +22,5 @@ class People(models.Model):
     agreeableness = models.FloatField(default=0)
     openness = models.FloatField(default=0)
     neuroticism = models.FloatField(default=0)
-    def __str__(self):
-        return self.id_test,self.extraversion,self.coscientiousness,self.agreeableness,self.openness,self.neuroticism
+
 
