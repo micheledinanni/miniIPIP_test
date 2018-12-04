@@ -50,7 +50,6 @@ def evaluate(request):
         q = People(extraversion=extraversion,agreeableness=agreeableness,
                    openness=openness,coscientiousness=coscientiousness,neuroticism=neuroticism)
         q.save()
-        Question.objects.update(score=0)
     return render(request,'myapp/evaluation.html',{'extraversion':q.extraversion,
                                                    'agreeableness':q.agreeableness,
                                                    'openness':q.openness,
