@@ -1,10 +1,16 @@
-from django.shortcuts import render, get_object_or_404
+
+from django.shortcuts import render, get_object_or_404,redirect
 from django.urls import reverse
-from .models import Question, Choice
-from django.db.models import Avg,Count
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+
+from .models import Question, Choice,People
+from django.db.models import Avg
+from django.http import HttpResponse, HttpResponseRedirect
+
+
 # Create your views here.
+
 def begin(request):
+
     return render(request,'myapp/begin.html')
 
 def index(request):
@@ -38,7 +44,7 @@ def evaluate(request):
         openness = Question.objects.filter(cat='O').aggregate(mean=Avg('score'))['mean']
         coscientiousness = Question.objects.filter(cat='C').aggregate(mean=Avg('score'))['mean']
         neuroticism = Question.objects.filter(cat='N').aggregate(mean=Avg('score'))['mean']
-        return render(request,'myapp/evaluation.html',{'extraversion':extraversion,
+    return render(request,'myapp/evaluation.html',{'extraversion':extraversion,
                                                        'agreeableness':agreeableness,
                                                        'openness':openness,
                                                        'coscientiousness':coscientiousness,
