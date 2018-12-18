@@ -1,11 +1,29 @@
+from tkinter import filedialog
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.utils.crypto import get_random_string
 from .models import Question,Choice,Email,People,PeopleQuestions,EmailToken
 from django.core.mail import send_mail
 from django.contrib.auth.models import Group,User
+from django.core import serializers
+import tkinter,json
+from django.forms.models import model_to_dict
+#action to save the results into file .json
+def writeToJSONFile(path,fileName,data):
+    filePathNameWExt = '' + path + '/' + fileName + '.json'
+    with open(filePathNameWExt,'w') as fp:
+        json.dump(data,fp)
+
+def save_as_json_people_avg(modeladmin, request, queryset):
+    results = list(People.objects.values())
+    writeToJSONFile('./','peopleAvg',results)
+
+def save_as_json_people_quest(modeladmin, request, queryset):
+    results = list(PeopleQuestions.objects.values())
+    writeToJSONFile('./', 'peopleQuestions', results)
 
 class PeopleAvg(admin.ModelAdmin):
+    actions = [save_as_json_people_avg,]
     list_display = ('id_test','extraversion','agreeableness','coscientiousness','openness','neuroticism')
 
 class EmailTokenOne(admin.ModelAdmin):
@@ -14,6 +32,7 @@ class EmailTokenOne(admin.ModelAdmin):
 admin.site.register(People,PeopleAvg)
 
 class PeopleQ(admin.ModelAdmin):
+    actions = [save_as_json_people_quest,]
     list_display = ('id_test','question','score','cat')
 
 admin.site.register(PeopleQuestions,PeopleQ)
@@ -40,7 +59,6 @@ class Send_email(admin.ModelAdmin):
         if "send-mail" in request.POST:
             #take the emails from text area anc send to people with different token
             email_to_send = request.POST.get('email').split(',')
-            print(email_to_send)
             for email in email_to_send:
                 id = get_random_string(length=6)
                 oggetto = request.POST.get('oggetto')
