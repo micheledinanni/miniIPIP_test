@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Question,Choice,People
+from django.contrib.auth.models import Group,User
 
 class Peoples(admin.TabularInline):
     model = People
@@ -25,3 +26,7 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceinLine]
 
 admin.site.register(Question, QuestionAdmin)
+
+#remove Group and User from Admin page
+admin.site.unregister(User)
+admin.site.unregister(Group)
