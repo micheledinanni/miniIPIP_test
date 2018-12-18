@@ -30,3 +30,4 @@ admin.site.register(Question, QuestionAdmin)
 #remove Group and User from Admin page
 admin.site.unregister(User)
 admin.site.unregister(Group)
+

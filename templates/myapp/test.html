@@ -1,0 +1,17 @@
+<html style="background-color: goldenrod">
+{% for question in questions %}
+    <div style="border:2px solid #ffffff;background: #000000;color: white;
+           border-radius: 15px">
+    <center><h1 style="font-size: 30px"> {{ question.question_text|upper }} </h1></center>
+        </div>
+           <form action="{% url 'myapp:vote' id=user question_id=question.id page=page%}" method="post">
+           <p></p>
+        {% for choice in question.choice_set.all %}
+            <input type="submit" style="font-size: 30px;border: 3px solid #111111;border-radius: 15px;
+        background-color: white;color: black;cursor: pointer;
+            " name="choice" id="choice{{ forloop.counter }}" value="{{ choice.choice_text }}">
+             {% csrf_token %}
+        {% endfor %}
+</form>
+{% endfor %}
+</html>

@@ -1,12 +1,19 @@
-{% if  question_list%}
-    <ul>
-    {% for question in question_list %}
-        <li><a href="/myapp/{{ question.id }}/">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No questions are available.</p>
-{% endif %}
-<div align="center">
-    <input type="button" value="Final evaluation" onclick="location.href='/myapp/evaluation/' "/>
-</div>
+<html xmlns:button="http://www.w3.org/1999/html" style="background-color: goldenrod">
+<head>
+    <center><font size="50">Welcome on the mini-IPIP test</font> </center></head>
+<body>
+<center>
+This test measures your BIG5 personality, one of the most popular scientific measures of personality.
+    You will see 20 statements, one at a time, and you will be asked to evaluate the extent to which you agree with them.
+    Please answer honestly with regard to how you see yourself in the present moment, not how you would like to be in the future.
+    There are no incorrect answers nor any personality profile that is inherently more desirable than another.
+    <p>If you would like an even more accurate measure of your personality traits, then please check 120-IPIP test.</p>
+The test's duration is about 10 minutes.<p></p>
+    </center>
+    <div align="center">
+        <input type="button" id="A" style="cursor: pointer;font-size: 30px;border: 3px solid #111111;border-radius: 15px;
+        background-color: white;color: black;"
+               onclick="location.href='/myapp/test?id={{ user }}&page={{ 1 }}'" value="START TEST"/>
+    </div>
+</body>
+</html>

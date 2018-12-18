@@ -1,19 +1,26 @@
-<html lang="en">
-  <head><center><font size="50">Results of the test</font> </center>
-    <title>Results</title>
-  </head>
-<body><center>
-    <div align="left">
-        <p>Extraversion:{{ extraversion }}</p>
-        <p>Agreeableness:{{ agreeableness }}</p>
-        <p>Openness:{{ openness }}</p>
-        <p>Coscientiousness:{{ coscientiousness }}</p>
-        <p>Neuroticism:{{ neuroticism }}</p>
-    </div>
-    <label>{{ error }}</label>
-   </center>
-<input type="button" style="size: 50px" value="Take another test" onclick="location.href='/myapp/'">
-</body>
-
+<html style="background-color: goldenrod" lang="en">
+ {% if not aux is 21 %}
+<div style="background-color: #111111" align="center">
+    <label style="background-color: black;font-size: 30px;color: white">Your partial results:</label>
+    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Extraversion: {{ extraversion }}</label> </p>
+    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Agreeableness: {{ agreeableness }}</label> </p>
+    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Coscientiousness: {{ coscientiousness }}</label> </p>
+    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Neuroticism: {{ neuroticism }}</label> </p>
+    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Openness: {{ openness }}</label> </p>
+</div>
+<div class="pagination" style="background-color: goldenrod" align="center">
+            <input type="button" id="A" style="cursor: pointer;font-size: 30px;border: 3px solid #111111;border-radius: 15px;
+        background-color: white;color: black;font-style: normal" value="Next Question"
+    onclick="location.href='/myapp/test?id={{ id }}&page={{ aux }}'">
+</div>
+{% else %}
+<div align="center" style="border: 4px solid #111111;border-radius: 15px;background-color: black;color: white">
+    <label style="background-color: black;font-size: 40px; color: white">Your final results:</label>
+    <p><label style="font-size: 20px;color: white;font-style: italic">Extraversion: {{ extraversion }}</label> </p>
+    <p><label style="font-size: 20px;color: white;font-style: italic">Agreeableness: {{ agreeableness }}</label> </p>
+    <p><label style="font-size: 20px;color: white;font-style: italic">Coscientiousness: {{ coscientiousness }}</label> </p>
+    <p><label style="font-size: 20px;color: white;font-style: italic">Neuroticism: {{ neuroticism }}</label> </p>
+    <p><label style="font-size: 20px;color: white;font-style: italic">Openness: {{ openness }}</label> </p>
+</div>
+{% endif %}
 </html>
-

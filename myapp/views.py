@@ -1,58 +1,47 @@
-
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
+from django import template
 from django.urls import reverse
 
-from .models import Question, Choice,People
+from .models import Question, Choice,People,PeopleQuestions
 from django.db.models import Avg
 from django.http import HttpResponse, HttpResponseRedirect
-
-
+import json
 # Create your views here.
 
-def begin(request):
-    return render(request,'myapp/begin.html')
+def index (request,id):
+    user = request.GET.get('id','')
+    return render(request,'myapp/index.html',{'user':user})
 
-
-def index(request):
+def test(request,id):
+    user = request.GET.get('id',id)
     question_list = Question.objects.all()
-    context = {'question_list': question_list}
-    return render(request, 'myapp/index.html', context)
+    paginator = Paginator(question_list,1)
+    page = request.GET.get('page')
+    questions = paginator.get_page(page)
+    return render(request,'myapp/test.html',{'user':user,'questions':questions,'page':page})
 
-
-def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'myapp/detail.html', {'question': question})
-
-
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        return render(request, 'myapp/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-         Question.objects.filter(pk=question_id).update(score=selected_choice.punteggio)
-    return HttpResponseRedirect(reverse('myapp:detail', args=(question.id,)))
-
-
-def evaluate(request):
-    if(Question.objects.filter(score=0)):
-      return HttpResponse("You haven't complete the test. Please come back and ckeck to get the final result.")
-    else:
-        extraversion = Question.objects.filter(cat='E').aggregate(mean=Avg('score'))['mean']
-        agreeableness = Question.objects.filter(cat='A').aggregate(mean=Avg('score'))['mean']
-        openness = Question.objects.filter(cat='O').aggregate(mean=Avg('score'))['mean']
-        coscientiousness = Question.objects.filter(cat='C').aggregate(mean=Avg('score'))['mean']
-        neuroticism = Question.objects.filter(cat='N').aggregate(mean=Avg('score'))['mean']
-        q = People(extraversion=extraversion,agreeableness=agreeableness,
-                   openness=openness,coscientiousness=coscientiousness,neuroticism=neuroticism)
-        q.save()
-        Question.objects.update(score=0)
-    return render(request,'myapp/evaluation.html',{'extraversion':q.extraversion,
-                                                   'agreeableness':q.agreeableness,
-                                                   'openness':q.openness,
-                                                   'coscientiousness':q.coscientiousness,
-                                                   'neuroticism':q.neuroticism})
+def vote(request,id,question_id,page):
+    question_list = Question.objects.all()
+    question = get_object_or_404(Question,pk=question_id)
+    scelta = request.POST.get('choice')
+    choice = Choice.objects.filter(question=question_id).filter(choice_text=scelta).values_list('punteggio',flat=True)[0]
+    q = PeopleQuestions(id_test=id,question=question_id,score=choice,cat=question.cat)
+    q.save()
+    aux = int(page)+1
+    extraversion = PeopleQuestions.objects.filter(id_test=id).filter(cat='E').aggregate(mean=Avg('score'))['mean']
+    agreeableness = PeopleQuestions.objects.filter(id_test=id).filter(cat='A').aggregate(mean=Avg('score'))['mean']
+    neuroticism = PeopleQuestions.objects.filter(id_test=id).filter(cat='N').aggregate(mean=Avg('score'))['mean']
+    openness = PeopleQuestions.objects.filter(id_test=id).filter(cat='O').aggregate(mean=Avg('score'))['mean']
+    coscientiousness = PeopleQuestions.objects.filter(id_test=id).filter(cat='C').aggregate(mean=Avg('score'))['mean']
+    if(int(page) is question_list.count()):
+       p= People(id_test=id,extraversion=extraversion,agreeableness=agreeableness,
+                                        neuroticism=neuroticism,openness=openness,
+                                        coscientiousness=coscientiousness)
+       p.save()
+    return render(request,'myapp/evaluation.html',{'extraversion':extraversion,
+                                                   'agreeableness':agreeableness,
+                                                   'neuroticism':neuroticism,
+                                                   'openness':openness,
+                                                   'coscientiousness':coscientiousness,
+                                                   'id':id,'questions':question_list,'aux':aux})
