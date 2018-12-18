@@ -1,12 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
-from django import template
-from django.urls import reverse
-
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from .models import Question, Choice,People,PeopleQuestions
 from django.db.models import Avg
-from django.http import HttpResponse, HttpResponseRedirect
-import json
+
 # Create your views here.
 
 def index (request,id):
@@ -45,3 +41,4 @@ def vote(request,id,question_id,page):
                                                    'openness':openness,
                                                    'coscientiousness':coscientiousness,
                                                    'id':id,'questions':question_list,'aux':aux})
+
