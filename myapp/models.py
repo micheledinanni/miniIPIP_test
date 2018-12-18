@@ -16,7 +16,9 @@ class Choice(models.Model):
         return self.choice_text
 
 class Email(models.Model):
-    email = models.CharField(max_length=200)
+    email = models.TextField()
+    text = models.TextField()
+    oggetto = models.TextField()
     def __str__(self):
         return self.email
 
@@ -33,3 +35,7 @@ class PeopleQuestions(models.Model):
     question = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
     cat = models.CharField(default='None',max_length=5)
+
+class EmailToken(models.Model):
+    id_test = models.CharField(max_length=6)
+    mail = models.CharField(max_length=50)
