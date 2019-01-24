@@ -1,17 +1,74 @@
-<html style="background-color: goldenrod">
+<html lang="en">
+<head><title>Mini Ipip Test</title>
+<style>
+    html{
+        font-family: "Leelawadee UI Semilight",serif;
+        background-color: #35445D;
+        background: -webkit-gradient(linear, left top, left bottom, from(#35445D), to(#91B9A4)) no-repeat fixed;
+        }
+    div[id]{
+        background-color: white;color: black;
+        border-radius: 3px;
+    }
+    h1[id]{
+        font-size: 35px;
+    }
+    input[id]{
+    font-size: 24px;
+    color: white;
+    border-radius: 3px;
+    font-family: "Leelawadee UI Semilight",serif;
+    border: 3px solid #181a27;
+    background-color: #181a27;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 5%;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+
+    input[id]:hover{
+        border: 3px solid orange;
+    }
+    input[id="previous"]{
+        font-size: 20px;
+        border: 3px solid #ffffff;
+        background-color: #ffffff;
+        color: black;
+        text-align: center;
+        cursor: pointer;
+        padding: 0 5%;
+        box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+</style></head>
 {% for question in questions %}
-    <div style="border:2px solid #ffffff;background: #000000;color: white;
-           border-radius: 15px">
-    <center><h1 style="font-size: 30px"> {{ question.question_text|upper }} </h1></center>
+    <div id="content">
+    <h1 align="center" id="header"> {{ question.question_text|upper }} </h1>
         </div>
            <form action="{% url 'myapp:vote' id=user question_id=question.id page=page%}" method="post">
            <p></p>
         {% for choice in question.choice_set.all %}
-            <input type="submit" style="font-size: 30px;border: 3px solid #111111;border-radius: 15px;
-        background-color: white;color: black;cursor: pointer;
-            " name="choice" id="choice{{ forloop.counter }}" value="{{ choice.choice_text }}">
-             {% csrf_token %}
+            <p></p>
+            <input type="submit" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.choice_text }}">
+            {% csrf_token %}
         {% endfor %}
 </form>
 {% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if questions.has_previous %}
+        <div align="center">
+            <br><br>
+            <input type="button" id="previous" onclick="location.href='?id={{ user }}&page={{ questions.previous_page_number }}'"
+            value="Previous Question" > <p></p>
+        {% endif %}
+        </div>
+        <center>
+        <span class="current">
+            Question {{ questions.number }} of {{ questions.paginator.num_pages }}.
+        </span>
+            </center>
+    </span>
+</div>
+{% block endtest %}
+{% endblock %}
 </html>
