@@ -1,26 +1,156 @@
-<html style="background-color: goldenrod" lang="en">
- {% if not aux is 21 %}
-<div style="background-color: #111111" align="center">
-    <label style="background-color: black;font-size: 30px;color: white">Your partial results:</label>
-    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Extraversion: {{ extraversion }}</label> </p>
-    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Agreeableness: {{ agreeableness }}</label> </p>
-    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Coscientiousness: {{ coscientiousness }}</label> </p>
-    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Neuroticism: {{ neuroticism }}</label> </p>
-    <p><label style="background-color: black;font-size: 20px;color: white;font-style: italic">Openness: {{ openness }}</label> </p>
-</div>
-<div class="pagination" style="background-color: goldenrod" align="center">
-            <input type="button" id="A" style="cursor: pointer;font-size: 30px;border: 3px solid #111111;border-radius: 15px;
-        background-color: white;color: black;font-style: normal" value="Next Question"
-    onclick="location.href='/myapp/test?id={{ id }}&page={{ aux }}'">
-</div>
-{% else %}
-<div align="center" style="border: 4px solid #111111;border-radius: 15px;background-color: black;color: white">
-    <label style="background-color: black;font-size: 40px; color: white">Your final results:</label>
-    <p><label style="font-size: 20px;color: white;font-style: italic">Extraversion: {{ extraversion }}</label> </p>
-    <p><label style="font-size: 20px;color: white;font-style: italic">Agreeableness: {{ agreeableness }}</label> </p>
-    <p><label style="font-size: 20px;color: white;font-style: italic">Coscientiousness: {{ coscientiousness }}</label> </p>
-    <p><label style="font-size: 20px;color: white;font-style: italic">Neuroticism: {{ neuroticism }}</label> </p>
-    <p><label style="font-size: 20px;color: white;font-style: italic">Openness: {{ openness }}</label> </p>
-</div>
+<html lang="en">
+<head><title>Your Personality</title>
+<style>
+    html{
+            font-family: "Leelawadee UI Semilight",serif;
+            background-color: #35445D;
+            background: -webkit-gradient(linear, left top, left bottom, from(#35445D), to(#91B9A4)) no-repeat fixed;
+        }
+    div[id]{
+        box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+        border-radius: 3px;
+        background-color: black;
+        color: whitesmoke;
+    }
+    h1{
+        font-size: 30px;
+        color: white;
+        text-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+    label[id]{
+        font-size: 35px;
+        color: black;
+        text-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+    input[name="email"]{
+        font-size: 20px;
+        border: 3px solid #ffffff;
+        background-color: #ffffff;
+        color: black;
+        text-align: center;
+        border-radius: 3px;
+        cursor: pointer;
+        padding: 0 5%;
+        box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+    input:hover{
+        border: 3px solid orange;
+    }
+    label[id="detail"]{
+        font-size: 18px;
+        color: white;
+        font-weight: bold;
+    }
+    h3{
+        text-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+        color: white;
+    }
+    p[id="content"]{
+        color: orange;
+    }
+    h1[id="msg"]{
+        color:#35445D;
+        border-color: #181a27;
+    }
+    .info{
+        background-color: whitesmoke;
+        border-radius: 3px;
+    }
+</style></head>
+<div align="center">
+    <h1>Thank you!</h1>
+    <h3>Thank you for participating in the Mini Ipip test.</h3>
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="info">
+      <h1 id="msg">{{ message }}</h1>
+        </div>
+    {% endfor %}
 {% endif %}
+
+    <label id="header">Your personality:</label><p></p>
+</div>
+<div id="results" align="center">
+    <p><label id="detail">Openness: {{ openness }} / 5</label> </p>
+    <p><label id="detail">Coscientiousness: {{ coscientiousness }} / 5</label> </p>
+    <p><label id="detail">Extraversion: {{ extraversion }} / 5</label> </p>
+    <p><label id="detail">Agreeableness: {{ agreeableness }} / 5</label> </p>
+    <p><label id="detail">Neuroticism: {{ neuroticism }} / 5</label> </p>
+
+    <h2 align="left">Openness</h2>
+        <p id="content" align="left">Openness to experience describes a dimension of personality that distinguishes
+            imaginative, creative people from down-to-earth, conventional people.</p>
+        <p align="left">
+            This trait refers to the extent to which people prefer novelty versus convention.
+            From the way you answered the questions, you seem to describe yourself as someone who dislikes
+            needless complexity, and prefers the familiar over the unusual. You might say that you are more conservative
+            than many, but not to an extreme level, and that you value practical outcomes over flighty imagination. </p>
+        <p align="left">
+        <strong>Reflective question:</strong>
+        <em>How do you respond to people who have lots of new ideas?</em>
+        </p>
+
+    <h2 align="left">Coscientiousness</h2>
+        <p id="content" align="left">Conscientiousness concerns the way in which we control,
+            regulate, and direct our impulses.</p>
+        <p align="left">
+            This trait refers to the extent to which people prefer an organised, or a flexible, approach in life.
+            From the way you answered the questions, you seem to describe yourself as someone who is random and fun
+            to be around but that you can plan and persist when life requires it. From your responses it appears that
+            depending on the situation, you can make quick decisions or deliberate for longer if necessary. </p>
+        <p align="left">
+        <strong>Reflective question:</strong>
+        <em>How do you go about organising your workload?</em>
+        </p>
+
+    <h2 align="left">Extraversion</h2>
+        <p align="left" id="content">Extraversion is marked by pronounced engagement with the external world,
+            versus being comfortable with your own company.</p>
+        <p align="left">
+        This trait refers to the extent to which we enjoy company, and seek excitement and stimulation.
+            From the way you answered the questions, you seem to describe yourself as someone who enjoys
+            and actively seeks out social occasions, but would say that they're not everything.
+            You might say that sometimes it is nice to step back for a while and have a quiet night in.
+        </p>
+    <p align="left">
+        <strong>Reflective question:</strong>
+        <em> What role do you tend to play in a team? (at work or in social activities)</em>
+    </p>
+
+    <h2 align="left">Agreeableness</h2>
+        <p align="left" id="content">Agreeableness reflects individual differences in concern
+            with cooperation and social harmony.</p>
+        <p align="left">
+            This trait refers to the way people express their opinions and manage relationships.
+            From the way you answered the questions, you seem to describe yourself as someone who people can find
+            difficult to get along with when you first meet, as you can be suspicious of their motives.
+            Your responses suggest that over time though people warm to you, and you
+            to them, although that doesn't stop you telling them "how it is".
+        </p>
+    <p align="left">
+        <strong>Reflective question:</strong>
+        <em>When others are experiencing problems, what do you do?</em>
+    </p>
+
+        <h2 align="left">Neuroticism</h2>
+        <p align="left" id="content">Neuroticism refers to the tendency to experience negative emotions.</p>
+        <p align="left">
+            This trait refers to the way people cope with,
+            and respond to, life's demands.
+            From the way you answered the questions, you seem to describe yourself as someone who is generally calm.
+            Based on your responses, you come across as someone who can feel emotional
+            or stressed out by some experiences, however your feelings tend to be warranted by the situation.
+        </p>
+    <p align="left">
+        <strong>Reflective question:</strong>
+        <em>Which situations make you feel under pressure and which situations do not?</em>
+    </p>
+</div>
+<div align="center"><p></p>
+    <form method="post">
+        {% csrf_token %}
+    <input name="email" type="submit" value="Send results by email">
+        </form>
+</div>
 </html>

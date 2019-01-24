@@ -1,18 +1,55 @@
-<html xmlns:button="http://www.w3.org/1999/html" style="background-color: goldenrod">
-<head>
-    <center><font size="50">Welcome on the mini-IPIP test</font> </center></head>
+<html xmlns:button="http://www.w3.org/1999/html" lang="en">
+<head title="Mini-ipip test">
+    <style>
+        html{
+            background-color: #35445D;
+            background: -webkit-gradient(linear, left top, left bottom, from(#35445D), to(#91B9A4)) no-repeat fixed;
+        }
+        input[id] {
+            font-size: 24px;
+            font-family: "Leelawadee UI Semilight",serif;
+            color: white;
+            border-radius: 3px;
+            border: 3px solid #181a27;
+            background-color: #181a27;
+            text-align: center;
+            cursor: pointer;
+            padding: 0 5%;
+            box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+        }
+        label[id]{
+            display: block;
+            text-align: center;
+            line-height: 150%;
+            font-size: 60px;
+            font-family: "Leelawadee UI Semilight", serif;
+        }
+        label[id="content"]{
+            text-align: center;
+            font-size: 20px;
+        }
+        input[id]:hover{
+            border: 3px solid orange;
+        }
+    </style>
+    {% load static %}
+    <title>Mini Ipip test</title>
+    <img src="{% static "myapp/logo-collab.png" %}" alt="logo-collab"><p></p>
+    <label id="title">Welcome to the mini-IPIP test </label><p></p>
+</head>
 <body>
-<center>
+<label id="content">
 This test measures your BIG5 personality, one of the most popular scientific measures of personality.
     You will see 20 statements, one at a time, and you will be asked to evaluate the extent to which you agree with them.
     Please answer honestly with regard to how you see yourself in the present moment, not how you would like to be in the future.
     There are no incorrect answers nor any personality profile that is inherently more desirable than another.
-    <p>If you would like an even more accurate measure of your personality traits, then please check 120-IPIP test.</p>
-The test's duration is about 10 minutes.<p></p>
-    </center>
+    <br><br>
+    If you would like an even more accurate measure of your personality traits, then please check 120-IPIP test.
+    <br><br>
+    The test's duration is about 10 minutes.<p></p>
+    </label>
     <div align="center">
-        <input type="button" id="A" style="cursor: pointer;font-size: 30px;border: 3px solid #111111;border-radius: 15px;
-        background-color: white;color: black;"
+        <input type="button" id="A"
                onclick="location.href='/myapp/test?id={{ user }}&page={{ 1 }}'" value="START TEST"/>
     </div>
 </body>
