@@ -5,3 +5,4 @@ sqlite:
   db: db.sqlite3
 other:
   email_from: "michele.dinanni1@gmail.com"
+  passwd: *****
