@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import smtplib
+import yaml
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,8 +23,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'michele.dinanni1@gmail.com'
 EMAIL_HOST_PASSWORD = 'sLurP96miki'
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -81,14 +81,20 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+def db_config():
+    with open("myproject\cfg\config.yml", "r") as ymlfile:
+        cfg = yaml.load(ymlfile)['sqlite']
+    return cfg
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': db_config().__getitem__('db'),
+        'USER': db_config().__getitem__('user'),
+        'PASSWORD': db_config().__getitem__('passwd'),
+        'HOST': db_config().__getitem__('host'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
