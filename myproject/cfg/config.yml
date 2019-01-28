@@ -1,0 +1,7 @@
+sqlite:
+  host: localhost
+  user: root
+  passwd: root
+  db: db.sqlite3
+other:
+  email_from: "michele.dinanni1@gmail.com"
