@@ -5,16 +5,10 @@ from django.utils.crypto import get_random_string
 from .models import Question,Choice,Email,Result,Question_people,EmailToken,FurtherPeopleInfo
 from django.core.mail import send_mail
 from django.contrib.auth.models import Group,User
-import tkinter,json,re,yaml
+import tkinter,json,re
+from django.conf import settings
 
-
-def email_from():
-    with open("myproject\cfg\config.yml","r") as ymlfile:
-        cfg = yaml.load(ymlfile)
-        email = cfg['other'].__getitem__('email_from')
-    return email
-
-#action to save the results into file .json
+#actions to save the results into file .json
 def writeToJSONFile(path,fileName,data):
     filePathNameWExt = '' + path + '/' + fileName + '.json'
     with open(filePathNameWExt,'w') as fp:
@@ -89,7 +83,7 @@ def check_send_email(email_to_send,request):
                 text_to_send = request.POST.get('text')
                 send_mail(oggetto,
                           text_to_send + id,
-                          email_from(),
+                          settings.EMAIL_HOST_USER,
                           recipient_list=[email],
                           fail_silently=False)
                 flag = True
