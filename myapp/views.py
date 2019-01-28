@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Question, Choice, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.db.models import Avg
-
+from .admin import email_from
 
 def index(request, id):
     user = request.GET.get('id', '')
@@ -75,7 +75,7 @@ def send_email(emailtosend, identifier):
         Result.objects.filter(id_test=identifier).values_list("neuroticism", flat=True)[0]) + "/5"
     if send_mail("My results of the MiniIPIP Test",
                  email_text,
-                 from_email='michele.dinanni1@gmail.com',
+                 from_email=email_from(),
                  recipient_list=[emailtosend, ], fail_silently=False) is 1:
         return 1
     return 0
