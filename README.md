@@ -21,8 +21,9 @@ sqlite:
 ```
 ## 3. Initial email configuration
 Edit the following configuration file:
-* `myproject/cfg/config.yml` - initial email to sending
+* `myproject/cfg/config.yml` - initial email to sending and password
 ```yaml
 other:
   email_from: "michele.dinanni1@gmail.com"
+  passwd: ******
 ```
