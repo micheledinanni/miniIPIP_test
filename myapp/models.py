@@ -45,7 +45,7 @@ class EmailToken(models.Model):
 class FurtherPeopleInfo(models.Model):
     id_test = models.CharField(max_length=10)
     email = models.CharField(max_length=50)
-    date_of_birth = models.DateField()
+    date_of_birth = models.CharField(max_length=30)
     born = models.CharField(max_length=100)
     gender = models.CharField(max_length=10)
     ethnicity = models.CharField(max_length=100)
