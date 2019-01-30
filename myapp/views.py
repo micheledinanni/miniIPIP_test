@@ -116,7 +116,8 @@ def help_improve(request, id):
             if '? undefined:undefined ?' in further_info.employment:
                 raise Exception
             datetime.datetime.strptime(further_info.date_of_birth, '%Y-%m-%d')
-            further_info.save()
+            if id not in FurtherPeopleInfo.objects.values_list(id_test=id,flat=True):
+                further_info.save()
         except ValueError: results(request,id=id)
         except Exception: results(request,id=id)
         return results(request,id=id)
