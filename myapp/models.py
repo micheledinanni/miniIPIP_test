@@ -16,11 +16,11 @@ class Choice(models.Model):
         return self.choice_text
 
 class Email(models.Model):
-    email_comma_separated = models.TextField(default='Enter the emails here:')
+    email_line_by_line = models.TextField(default='Enter the emails here:')
     text = models.TextField(default='Enter the text here:')
     oggetto = models.TextField(default='Enter the object here:')
     def __str__(self):
-        return self.email_comma_separated
+        return self.email_line_by_line
 
 class Result(models.Model):
     id_test = models.CharField(max_length=10,primary_key=True)
