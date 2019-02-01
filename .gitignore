@@ -58,7 +58,8 @@ local_settings.py
 .python-version
 
 # virtualenv
-.venv
+.venv*
+.env*
 venv/
 ENV/
 
