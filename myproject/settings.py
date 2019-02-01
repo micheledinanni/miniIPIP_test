@@ -14,17 +14,23 @@ import os
 import smtplib
 import yaml
 
-def email_from():
-    with open("myproject\cfg\config.yml","r") as ymlfile:
+def email_from():    
+    with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
         cfg = yaml.load(ymlfile)
-        email = cfg['other'].__getitem__('email_from')
+        email = cfg['email'].__getitem__('email_from')
     return email
+
 def password():
-    with open("myproject\cfg\config.yml","r") as ymlfile:
+    with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
         cfg = yaml.load(ymlfile)
-        password = cfg['other'].__getitem__('passwd')
+        password = cfg['email'].__getitem__('passwd')
     return password
 
+def secret():
+    with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
+        cfg = yaml.load(ymlfile)
+        key = cfg['security'].__getitem__('secret_key')
+    return key    
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +46,7 @@ EMAIL_HOST_PASSWORD = password()
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=-z@=s3n*-dk=j4h9&r9u*ns*(c&o$6(+xv9g4v2sydkm5lk=^'
+SECRET_KEY = secret()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -94,7 +100,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 def db_config():
-    with open("myproject\cfg\config.yml", "r") as ymlfile:
+    with open(os.path.join("myproject","cfg","config.yml"), "r") as ymlfile:
         cfg = yaml.load(ymlfile)['sqlite']
     return cfg
 
