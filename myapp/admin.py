@@ -66,7 +66,7 @@ class Send_email(admin.ModelAdmin):
     def response_change(self, request, obj):
         if "send-mail" in request.POST:
             #take the emails from text area and send to people with different tokens
-            email_to_send = request.POST.get('email_comma_separated').split(',')
+            email_to_send = request.POST.get('email_line_by_line').splitlines()
             check_send_email(email_to_send,request)
             self.message_user(request,"Email checked and sent succesfully!")
             return HttpResponseRedirect(".")

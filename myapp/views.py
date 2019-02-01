@@ -1,4 +1,3 @@
-import datetime
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
@@ -101,24 +100,11 @@ def help_improve(request, id):
         further_info.level_school = request.POST['education']
         further_info.employment = request.POST['employment']
         try:
-            if '? undefined:undefined ?' in further_info.id_test:
-               raise Exception
-            if '? undefined:undefined ?' in further_info.email:
-                raise Exception
-            if '? undefined:undefined ?' in further_info.born:
-                raise Exception
-            if '? undefined:undefined ?' in further_info.gender:
-                raise Exception
-            if '? undefined:undefined ?' in further_info.ethnicity:
-                raise Exception
-            if '? undefined:undefined ?' in further_info.level_school:
-                raise Exception
-            if '? undefined:undefined ?' in further_info.employment:
-                raise Exception
-            datetime.datetime.strptime(further_info.date_of_birth, '%Y-%m-%d')
-            if id not in FurtherPeopleInfo.objects.values_list(id_test=id,flat=True):
-                further_info.save()
-        except ValueError: results(request,id=id)
-        except Exception: results(request,id=id)
+            if further_info.date_of_birth is '':
+                if '? undefined:undefined ?' in further_info.born in further_info.gender in further_info.ethnicity\
+                        in further_info.level_school in further_info.employment:
+                    raise Exception
+            further_info.save()
+        except Exception: pass
         return results(request,id=id)
     return render(request, 'myapp/help_improve.html', {'id': id})
