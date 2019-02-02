@@ -1,5 +1,7 @@
 <html lang="en">
 <head><title>Your Personality</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static "myapp/favicon.ico" %}"/>
     <script type="text/javascript">
         history.pushState(null,null,location.href);
         window.onpopstate = function () {
