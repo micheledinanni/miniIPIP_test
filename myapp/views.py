@@ -59,7 +59,8 @@ def results(request, id):
                                                      'coscientiousness': coscientiousness,
                                                      'extraversion': extraversion,
                                                      'agreeableness': agreeableness,
-                                                     'neuroticism': neuroticism})
+                                                     'neuroticism': neuroticism,
+                                                     'email': email})
 
 
 def send_email(emailtosend, identifier):
@@ -86,8 +87,8 @@ def help_improve(request, id):
     id = request.GET.get('id')
     if request.POST.get('skip'):
         return results(request, id=id)
-    if request.POST.get('email'):
-        emailtosend = EmailToken.objects.filter(id_test=id).values_list("email", flat=True)[0]
+    if request.POST.get('email_button'):
+        emailtosend = request.POST['email_string']
         if send_email(emailtosend, id) is 1:
             messages.success(request, 'The email has been sent successfully!')
         return results(request, id=id)
@@ -118,6 +119,5 @@ def redirect_root(request):
     id = get_random_string(length=6)
     if id not in EmailToken.objects.filter(id_test=id).values_list('id_test', flat=True):
         obj.id_test = id
-        obj.email = 'anonymous user'
         obj.save()
     return HttpResponseRedirect('/myapp?id={0}'.format(id))
