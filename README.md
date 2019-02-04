@@ -23,7 +23,7 @@ sqlite:
 Edit the following configuration file:
 * `myproject/cfg/config.yml` - initial email to sending and password
 ```yaml
-other:
-  email_from: "michele.dinanni1@gmail.com"
-  passwd: ******
+email:
+  email_from: "collab.uniba@gmail.com"
+  passwd: ****
 ```
