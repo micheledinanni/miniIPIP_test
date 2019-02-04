@@ -6,9 +6,9 @@
     html{
         padding-top: 100px;
         font-family: "Leelawadee UI Semilight",serif;
-        background-color: #35445D;
-        background: -webkit-gradient(linear, left top, left bottom, from(#35445D), to(#91B9A4)) no-repeat fixed;
-        }
+         background-color: #10131c;
+        background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#759685)) no-repeat fixed;
+       }
     div[id]{
         background-color: white;color: black;
         border-radius: 3px;
@@ -17,15 +17,17 @@
         font-size: 35px;
     }
     input[id]{
-    font-size: 24px;
+    font-size:24px;
+    width: 100%;
+    min-width: 50px; 
+    max-width: 350px; 
     color: white;
     border-radius: 3px;
     font-family: "Leelawadee UI Semilight",serif;
     border: 3px solid #181a27;
     background-color: #181a27;
-    text-align: center;
+    text-align: left;
     cursor: pointer;
-    padding: 0 5%;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
     }
 
@@ -45,7 +47,7 @@
 </style></head>
 {% for question in questions %}
     <div id="content">
-    <h1 align="center" id="header"> {{ question.question_text|upper }} </h1>
+    <h1 align="center" id="header"> {{ question.question_text }} </h1>
         </div>
            <form action="{% url 'myapp:vote' id=user question_id=question.id page=page%}" method="post">
            <p></p><br>
