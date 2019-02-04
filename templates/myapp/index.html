@@ -47,11 +47,15 @@
         input[id]:hover{
             border: 3px solid orange;
         }
+        img{
+            padding: 0 100px;
+        }
     </style>
     {% load static %}
     <title>mini-IPIP test</title>
     <link rel="shortcut icon" href="{% static "myapp/favicon.ico" %}"/>
-    <img src="{% static "myapp/logo-collab.png" %}" alt="logo-collab"><p></p>
+    <img src="{% static "myapp/logo-collab.png" %}" alt="logo-collab" height="75px" width="200px">
+    <img src="{% static "myapp/logo-uniba.jpg" %}" alt="logo-uniba" height="75px" width="200px" align="right"><p></p>
     <label id="title">Welcome to the mini-IPIP test </label><p></p>
 </head>
 <body>
