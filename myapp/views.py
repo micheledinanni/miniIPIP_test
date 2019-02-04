@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.utils.crypto import get_random_string
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
@@ -7,7 +8,8 @@ from .models import Question, Choice, Result, Question_people, EmailToken, Furth
 from django.db.models import Avg
 from django.conf import settings
 
-def index(request,id):
+
+def index(request, id):
     user = request.GET.get('id', '')
     return render(request, 'myapp/index.html', {'user': user})
 
@@ -51,7 +53,7 @@ def results(request, id):
     agreeableness = Question_people.objects.filter(id_test=user).filter(cat='A').aggregate(mean=Avg('score'))['mean']
     neuroticism = Question_people.objects.filter(id_test=user).filter(cat='N').aggregate(mean=Avg('score'))['mean']
     p = Result(id_test=user, email=email, extraversion=extraversion, agreeableness=agreeableness, openness=openness,
-                coscientiousness=coscientiousness, neuroticism=neuroticism)
+               coscientiousness=coscientiousness, neuroticism=neuroticism)
     p.save()
     return render(request, 'myapp/evaluation.html', {'openness': openness,
                                                      'coscientiousness': coscientiousness,
@@ -101,10 +103,15 @@ def help_improve(request, id):
         further_info.employment = request.POST['employment']
         try:
             if further_info.date_of_birth is '':
-                if '? undefined:undefined ?' in further_info.born in further_info.gender in further_info.ethnicity\
+                if '? undefined:undefined ?' in further_info.born in further_info.gender in further_info.ethnicity \
                         in further_info.level_school in further_info.employment:
                     raise Exception
             further_info.save()
-        except Exception: pass
-        return results(request,id=id)
+        except Exception:
+            pass
+        return results(request, id=id)
     return render(request, 'myapp/help_improve.html', {'id': id})
+
+
+def redirect_root(request):
+    return HttpResponseRedirect('/myapp?id=')
