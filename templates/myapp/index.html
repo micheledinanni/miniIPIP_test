@@ -23,15 +23,25 @@
             color: white;
             text-align: center;
             line-height: 150%;
-            font-size: 60px;
+            font-size: 50px;
             font-family: "Leelawadee UI Semilight", serif;
         }
         label[id=content]{
             display: block;
+            color: white;
+            text-align: left;
+            line-height: 130%;
+            font-size: 18px;
+            font-family: "Leelawadee UI Semilight", serif;
+            padding-left: 200px;
+            padding-right: 200px;
+        }
+        label[id=footnote]{
+            display: block;
             color: black;
-            text-align: center;
-            line-height: 150%;
-            font-size: 20px;
+            text-align: left;
+            line-height: 130%;
+            font-size: 14px;
             font-family: "Leelawadee UI Semilight", serif;
         }
         input[id]:hover{
@@ -47,24 +57,25 @@
 <body>
 <label id="content">
     <p>This test measures your <b>Big Five</b> personality [1]. The Big Five is one of the most popular scientific measures of personality.</p>
-    <p>You will see 20 statements, one at a time, and you will be asked to evaluate the extent to which you agree with them. You may go back 
+    <p>You will be presented with 20 statements, one at a time, and you will be asked to evaluate the extent to which you agree with them on a 5-point scale (<i>Strongly Disagree -- Strongly Agree</i>). You may go back 
        and change a previous answer, but you cannot skip forward. Please, answer honestly with regard to how you see yourself in the present moment, 
-       not how you would like to be in the future. Also, keep in mind that there are no incorrect answers nor any personality profile that 
-      is inherently better than another.
+       not how you would like to be in the future. Also, keep in mind that there are no incorrect answers nor any personality profile that is better than another.
     </p>
     <p>
         Only completed survey answers will be stored. Upon test completion, you will receive by email a copy of you personality score or you can save the result page locally.
     </p>
-    <br><br>
-    The test duration is about 3-5 minutes. Click the button below to start.<br><br>
+    <br>
+    The test duration is about 3-5 minutes. Click the button below to start.<br><br><br>
     </label>
     <div align="center">
         <input type="button" id="A"
                onclick="location.href='/myapp/test?id={{ user }}&page={{ 1 }}'" value="START TEST"/>
     </div>
-    
+    <br><br>
+    <label id="footnote">
     <p><b>References</b></p>
     [1] Donnellan, M.B., Oswald, F.L., Baird, B.M., & Lucas, R.E. (2006). <b>The mini-IPIP scales: Tiny-yet-effective measures of the Big Five factors of personality</b>. 
     <i>Psychological Assessment</i>, 18, 192-203
+    </label>
 </body>
 </html>
