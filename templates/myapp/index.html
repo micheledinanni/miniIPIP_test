@@ -2,13 +2,14 @@
 <head title="mini-IPIP test">
     <meta charset="UTF-8">
     <style>
-        html{
-             background-color: #10131c;
-             background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#759685)) no-repeat fixed;
-      }
+        html {
+            background-color: #10131c;
+            background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#759685)) no-repeat fixed;
+        }
+
         input[id] {
             font-size: 24px;
-            font-family: "Leelawadee UI Semilight",serif;
+            font-family: "Leelawadee UI Semilight", serif;
             color: white;
             border-radius: 3px;
             border: 3px solid #181a27;
@@ -16,9 +17,10 @@
             text-align: center;
             cursor: pointer;
             padding: 0 5%;
-            box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+            box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
         }
-        label[id=title]{
+
+        label[id=title] {
             display: block;
             color: white;
             text-align: center;
@@ -26,7 +28,8 @@
             font-size: 50px;
             font-family: "Leelawadee UI Semilight", serif;
         }
-        label[id=content]{
+
+        label[id=content] {
             display: block;
             color: white;
             text-align: left;
@@ -36,7 +39,8 @@
             padding-left: 200px;
             padding-right: 200px;
         }
-        label[id=footnote]{
+
+        label[id=footnote] {
             display: block;
             color: black;
             text-align: left;
@@ -44,38 +48,55 @@
             font-size: 14px;
             font-family: "Leelawadee UI Semilight", serif;
         }
-        input[id]:hover{
+
+        input[id]:hover {
             border: 3px solid orange;
+        }
+
+        img {
+            padding: 0 100px;
         }
     </style>
     {% load static %}
     <title>mini-IPIP test</title>
     <link rel="shortcut icon" href="{% static "myapp/favicon.ico" %}"/>
-    <img src="{% static "myapp/logo-collab.png" %}" alt="logo-collab"><p></p>
-    <label id="title">Welcome to the mini-IPIP test </label><p></p>
+    <a href="http://collab.di.uniba.it/"><img src="{% static "myapp/logo-collab.png" %}" alt="logo-collab" height="75px"
+                                              width="200px"></a>
+    <a href="https://www.uniba.it/"><img src="{% static "myapp/logo-uniba.jpg" %}"
+                                         alt="logo-uniba" height="75px" width="200px" align="right"></a>
+    <p></p>
+    <label id="title">Welcome to the mini-IPIP test </label>
+    <p></p>
 </head>
 <body>
 <label id="content">
-    <p>This test measures your <b>Big Five</b> personality [1]. The Big Five is one of the most popular scientific measures of personality.</p>
-    <p>You will be presented with 20 statements, one at a time, and you will be asked to evaluate the extent to which you agree with them on a 5-point scale [<i>Strongly Disagree</i> = 1, ..., <i>Strongly Agree</i> = 5]. You may go back 
-       and change a previous answer, but you cannot skip forward. Please, answer honestly with regard to how you see yourself in the present moment, 
-       not how you would like to be in the future. Also, keep in mind that there are no incorrect answers nor any personality profile that is better than another.
+    <p>This test measures your <b>Big Five</b> personality [1]. The Big Five is one of the most popular scientific
+        measures of personality.</p>
+    <p>You will be presented with 20 statements, one at a time, and you will be asked to evaluate the extent to which
+        you agree with them on a 5-point scale [<i>Strongly Disagree</i> = 1, ..., <i>Strongly Agree</i> = 5]. You may
+        go back
+        and change a previous answer, but you cannot skip forward. Please, answer honestly with regard to how you see
+        yourself in the present moment,
+        not how you would like to be in the future. Also, keep in mind that there are no incorrect answers nor any
+        personality profile that is better than another.
     </p>
     <p>
-        Only completed survey answers will be stored. Upon test completion, you will receive by email a copy of you personality score or you can save the result page locally.
+        Only completed survey answers will be stored. Upon test completion, you will receive by email a copy of you
+        personality score or you can save the result page locally.
     </p>
     <br>
     The test duration is about 3-5 minutes. Click the button below to start.<br><br><br>
-    </label>
-    <div align="center">
-        <input type="button" id="A"
-               onclick="location.href='/myapp/test?id={{ user }}&page={{ 1 }}'" value="START TEST"/>
-    </div>
-    <br><br>
-    <label id="footnote">
+</label>
+<div align="center">
+    <input type="button" id="A"
+           onclick="location.href='/myapp/test?id={{ user }}&page={{ 1 }}'" value="START TEST"/>
+</div>
+<br><br>
+<label id="footnote">
     <p><b>References</b></p>
-    [1] Donnellan, M.B., Oswald, F.L., Baird, B.M., & Lucas, R.E. (2006). <b>The mini-IPIP scales: Tiny-yet-effective measures of the Big Five factors of personality</b>. 
+    [1] Donnellan, M.B., Oswald, F.L., Baird, B.M., & Lucas, R.E. (2006). <b>The mini-IPIP scales: Tiny-yet-effective
+    measures of the Big Five factors of personality</b>.
     <i>Psychological Assessment</i>, 18, 192-203
-    </label>
+</label>
 </body>
 </html>
