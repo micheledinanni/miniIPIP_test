@@ -114,4 +114,10 @@ def help_improve(request, id):
 
 
 def redirect_root(request):
-    return HttpResponseRedirect('/myapp?id=')
+    obj = EmailToken()
+    id = get_random_string(length=6)
+    if id not in EmailToken.objects.filter(id_test=id).values_list('id_test', flat=True):
+        obj.id_test = id
+        obj.email = 'anonymous user'
+        obj.save()
+    return HttpResponseRedirect('/myapp?id={0}'.format(id))
