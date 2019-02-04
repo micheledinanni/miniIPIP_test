@@ -39,23 +39,32 @@
         }
     </style>
     {% load static %}
-    <title>Mini Ipip test</title>
+    <title>mini-IPIP test</title>
     <link rel="shortcut icon" href="{% static "myapp/favicon.ico" %}"/>
     <img src="{% static "myapp/logo-collab.png" %}" alt="logo-collab"><p></p>
     <label id="title">Welcome to the mini-IPIP test </label><p></p>
 </head>
 <body>
 <label id="content">
-This test measures your BIG5 personality, one of the most popular scientific measures of personality.
-    You will see 20 statements, one at a time, and you will be asked to evaluate the extent to which you agree with them.
-    Please answer honestly with regard to how you see yourself in the present moment, not how you would like to be in the future.
-    There are no incorrect answers nor any personality profile that is inherently more desirable than another.
+    <p>This test measures your <b>Big Five</b> personality [1]. The Big Five is one of the most popular scientific measures of personality.</p>
+    <p>You will see 20 statements, one at a time, and you will be asked to evaluate the extent to which you agree with them. You may go back 
+       and change a previous answer, but you cannot skip forward. Please, answer honestly with regard to how you see yourself in the present moment, 
+       not how you would like to be in the future. Also, keep in mind that there are no incorrect answers nor any personality profile that 
+      is inherently better than another.
+    </p>
+    <p>
+        Only completed survey answers will be stored. Upon test completion, you will receive by email a copy of you personality score or you can save the result page locally.
+    </p>
     <br><br>
-    The test's duration is about 5 minutes.<br><br>
+    The test duration is about 3-5 minutes. Click the button below to start.<br><br>
     </label>
     <div align="center">
         <input type="button" id="A"
                onclick="location.href='/myapp/test?id={{ user }}&page={{ 1 }}'" value="START TEST"/>
     </div>
+    
+    <p><b>References</b></p>
+    [1] Donnellan, M.B., Oswald, F.L., Baird, B.M., & Lucas, R.E. (2006). <b>The mini-IPIP scales: Tiny-yet-effective measures of the Big Five factors of personality</b>. 
+    <i>Psychological Assessment</i>, 18, 192-203
 </body>
 </html>
