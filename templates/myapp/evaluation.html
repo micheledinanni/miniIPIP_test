@@ -14,10 +14,9 @@
             background-color: #10131c;
             background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#91B9A4)) no-repeat fixed;
       	}
-    div[id]{
+    div[id="email"]{
         box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
         border-radius: 3px;
-        background-color: none;
         color: whitesmoke;
         padding-left: 20px;
         padding-right: 20px;
@@ -32,7 +31,7 @@
         color: darkgrey;
         text-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
     }
-    input[name="email"]{
+    input[name="email_button"]{
         font-size: 20px;
         color: white;
     	border-radius: 3px;
@@ -71,6 +70,17 @@
         background-color: whitesmoke;
         border-radius: 3px;
     }
+    input[id="email_string"] {
+            height: 35px;
+            width: 100%;
+            line-height: 1.42857143;
+            font-size: 14px;
+            border: 0;
+            border-radius: 3px;
+            padding: 0 3px;
+            color: #181a27;
+            font-family: "Leelawadee UI Semilight", serif;
+        }
 </style></head>
 <div align="center">
     <h1>Thank you!</h1>
@@ -140,8 +150,10 @@
 </div>
 <div align="center"><p></p>
     <form method="post">
+    <label>Email<br>
+    <input type="email" value="{{ email }}" id="email_string" name="email_string"></label><br><br>
         {% csrf_token %}
-    <input name="email" type="submit" value="Send results by email">
+    <input name="email_button" type="submit" value="Send results by email">
         </form>
 </div>
 </html>
