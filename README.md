@@ -27,3 +27,12 @@ email:
   email_from: "collab.uniba@gmail.com"
   passwd: ****
 ```
+## 4. Change admin password
+To change the admin password go to:
+* `/admin`
+
+``
+  Check 'Change Password' on top right and insert old password,
+  then insert your new password.
+``
+##### Notice that the user is 'admin'
