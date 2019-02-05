@@ -70,7 +70,8 @@ class Send_email(admin.ModelAdmin):
             check_send_email(email_to_send,request)
             self.message_user(request,"Email checked and sent succesfully!")
             return HttpResponseRedirect(".")
-        return super().response_change(request, obj)
+        self.change = super.response_change(request, obj)
+        return self.change
 
 def check_send_email(email_to_send,request):
     for email in email_to_send:
