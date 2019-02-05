@@ -55,6 +55,8 @@ def results(request, id):
     p = Result(id_test=user, email=email, extraversion=extraversion, agreeableness=agreeableness, openness=openness,
                coscientiousness=coscientiousness, neuroticism=neuroticism)
     p.save()
+    if email == 'Anonymous User':
+        email= ''
     return render(request, 'myapp/evaluation.html', {'openness': openness,
                                                      'coscientiousness': coscientiousness,
                                                      'extraversion': extraversion,
@@ -119,5 +121,9 @@ def redirect_root(request):
     id = get_random_string(length=6)
     if id not in EmailToken.objects.filter(id_test=id).values_list('id_test', flat=True):
         obj.id_test = id
+        obj.email = 'Anonymous User'
         obj.save()
     return HttpResponseRedirect('/myapp?id={0}'.format(id))
+
+def privacy(request):
+    return render(request,'myapp/privacy.html')
