@@ -1,0 +1,231 @@
+<html lang="en">
+<head><title>mini-IPIP test</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static "miniipip/favicon.ico" %}"/>
+    <script type="text/javascript">
+        history.pushState(null,null,location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+<style>
+    html{
+            font-family: "Leelawadee UI Semilight",serif;
+            background-color: #10131c;
+            background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#91B9A4)) no-repeat fixed;
+      	}
+    div[id="results"]{
+        color: whitesmoke;
+    }
+    div[id="email"]{
+        box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+        border-radius: 3px;
+        color: whitesmoke;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    h1{
+        font-size: 30px;
+        color: white;
+        text-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+    label[id]{
+        font-size: 35px;
+        color: darkgrey;
+        text-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+    input[name="email_button"]{
+        font-size: 20px;
+        color: white;
+    	border-radius: 3px;
+    	font-family: "Leelawadee UI Semilight",serif;
+    	border: 3px solid #181a27;
+    	background-color: #181a27;
+    	text-align: left;
+    	cursor: pointer;
+        box-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+    }
+    input:hover{
+        border: 3px solid orange;
+    }
+    label[id="detail"]{
+        font-size: 18px;
+        color: white;
+        font-weight: bold;
+    }
+    h3{
+        text-shadow: 0 3px 4px 0 rgba(0,0,0,0.35);
+        color: white;
+    }
+    h2{
+        margin-top: 30px;
+        color: whitesmoke;
+    }
+    h1[id="msg"]{
+        color:#35445D;
+        border-color: #181a27;
+    }
+    p[id="content"]{
+        font-size: 14px;
+        margin-top: -20px;
+        color: lightgrey;
+    }
+    p[id="description"]{
+        margin-top: -10px;
+        text-align: left;
+    }
+    .info{
+        background-color: whitesmoke;
+        border-radius: 3px;
+    }
+    input[id="email_string"] {
+            height: 35px;
+            width: 15%;
+            line-height: 1.42857143;
+            font-size: 14px;
+            border: 0;
+            border-radius: 3px;
+            padding: 0 3px;
+            color: #181a27;
+            font-family: "Leelawadee UI Semilight", serif;
+        }
+    footer {
+            font-style: normal;
+            color: #ffffff;
+            padding: 20px 0;
+            height: 244px;
+            display: block;
+            box-sizing: border-box;
+            font-family: "Leelawadee UI Semilight", sans-serif;
+
+        }
+
+        .outer > div {
+            margin: 2px;
+            background-color: #181a27;
+            width: 100%;
+
+        }
+
+        .outer {
+            display: flex;
+            justify-content: center;
+            padding: 3px;
+            text-align: center;
+            height: 100%;
+        }
+
+        img[alt="logo-collab-footer"] {
+            padding: 0 20px;
+        }
+        .btn-link {
+            color: #ffffff;
+            text-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
+            font-weight: bold;
+            background-color: transparent;
+            border-color: transparent;
+            font-family: "Leelawadee UI Semilight", serif;
+            box-shadow: none;
+            border-radius: 0;
+            cursor: pointer;
+        }
+
+        .btn-link:hover {
+            color: orange;
+        }
+</style></head>
+<body>
+<div align="center">
+    <h1>Thank you!</h1>
+    <h3>Thank you for completing the mini-IPIP test</h3>
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="info">
+      <h1 id="msg">{{ message }}</h1>
+        </div>
+    {% endfor %}
+{% endif %}
+
+    <label id="header">Your Big Five personality trait scores:</label><p></p>
+</div>
+<div id="results" align="center">
+    <p><label id="detail">Openness: {{ openness }} / 5</label> </p>
+    <p><label id="detail">Coscientiousness: {{ coscientiousness }} / 5</label> </p>
+    <p><label id="detail">Extraversion: {{ extraversion }} / 5</label> </p>
+    <p><label id="detail">Agreeableness: {{ agreeableness }} / 5</label> </p>
+    <p><label id="detail">Neuroticism: {{ neuroticism }} / 5</label> </p>
+
+    <h2 align="left">Openness</h2>
+        <p id="content" align="left"> High=inventive/curious vs. Low=consistent/cautious</p>
+        <p id="description">
+            This trait refers to the extent to which a person is open to experiencing a variety of activities, proactively seeking and appreciating unfamiliar experiences for its own sake. People with low scores in Openness tend to be more conservative and close-minded. </p>
+        <p id="description">
+            To further reflect on your level of Openness, ask yourself:  <em>How do I respond to people who have lots of new ideas?</em>
+        </p>
+
+    <h2 align="left">Coscientiousness</h2>
+        <p id="content" align="left"> High=efficient/organized vs. Low=easy-going/careless</p>
+        <p id="description">
+            This trait refers to people's tendency to plan in advance, act in an organized or thoughtful way and their degree of organization, persistence, and motivation in goal-directed behavior.  Individuals with low Conscientiousness levels tend to be more tolerant and less bound by rules and plans. </p>
+        <p id="description">
+            To further reflect on your level of Coscientiousness, ask yourself: <em>How do I organize my workload?</em>
+        </p>
+
+    <h2 align="left">Extraversion</h2>
+        <p align="left" id="content">High=outgoing/energetic vs. Low=solitary/reserved</p>
+        <p id="description">
+            This trait refers to the tendency to seek stimulation in the company of others, thus assessing people's amount of interpersonal interaction, activity level, need for stimulation, and capacity for joy. Those low in Extraversion are reserved and solitary.
+        </p>
+        <p id="description">
+            To further reflect on your level of Extraversion, ask yourself:  <em> What role do I tend to play in a team? (at work or in social activities)</em>
+        </p>
+
+    <h2 align="left">Agreeableness</h2>
+        <p align="left" id="content">High=friendly/compassionate vs. Low=challenging/detached</p>
+        <p id="description">
+            This trait refers to a person's tendency to be compassionate and cooperative toward others, with respect to thoughts, feelings, and actions. Low Agreeableness is related to being suspicious, challenging, and antagonistic towards other people.
+        </p>
+        <p id="description">
+            To further reflect on your level of Agreeableness, ask yourself:  <em>When others are experiencing problems, what do I do?</em>
+        </p>
+
+        <h2 align="left">Neuroticism</h2>
+        <p align="left" id="content">High=sensitive/nervous vs. Low=secure/confident</p>
+        <p id="description">
+            This trait refers to the extent to which a person's emotions are sensitive to the environment, thus identifying individuals who lack in emotional stability, prone to psychological distress, anxiety, excessive cravings or urges. Those who have a low score in Neuroticism are calmer and more stable.
+        </p>
+        <p id="description">
+            To further reflect on your level of Neuroticism, ask yourself: <em>Which situations make me feel under pressure and which situations do not?</em>
+        </p>
+</div>
+<div align="center"><p></p>
+    <form method="post">
+    <label>Email<br>
+    <input type="email" value="{{ email }}" id="email_string" name="email_string"></label><br><br>
+        {% csrf_token %}
+    <input name="email_button" type="submit" value="Send results by email">
+        </form>
+</div>
+</body>
+<footer>
+    <div class="outer">
+        <div>
+            {% load static %}
+            <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/logo-collab.png" %}"
+                                                      alt="logo-collab-footer" height="75px" width="200px"></a>
+            <br><strong>Collaborative Development Group</strong><br><br>Department of Computer Science
+            <br>University of Bari<br>Italy<br>
+        </div>
+        <div>
+            <h2>Contact us</h2>
+            <form action="mailto:collab-uniba@gmail.com?subject=Mini-IPIP test">
+                <button class="btn-link" value="send-email" name="send-email" type="submit">Send an email</button>
+                </form>
+            <form onclick="location.href='/privacy'">
+                <button class="btn btn-link" value="privacy" name="privacy" type="button">Site Privacy</button>
+            </form>
+        </div>
+    </div>
+</footer>
+</html>
