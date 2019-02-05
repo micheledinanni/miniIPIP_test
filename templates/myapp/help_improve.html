@@ -68,6 +68,50 @@
         .btn-link:hover {
             color: orange;
         }
+        .btn-footer {
+            color: #ffffff;
+            text-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
+            font-weight: bold;
+            background-color: transparent;
+            border-color: transparent;
+            font-family: "Leelawadee UI Semilight", serif;
+            box-shadow: none;
+            border-radius: 0;
+            cursor: pointer;
+        }
+
+        .btn-footer:hover {
+            color: orange;
+        }
+        footer {
+            font-style: normal;
+            color: #ffffff;
+            padding: 20px 0;
+            height: 244px;
+            display: block;
+            box-sizing: border-box;
+            font-family: "Leelawadee UI Semilight", sans-serif;
+
+        }
+
+        .outer > div {
+            margin: 2px;
+            background-color: #181a27;
+            width: 100%;
+
+        }
+
+        .outer {
+            display: flex;
+            justify-content: center;
+            padding: 3px;
+            text-align: center;
+            height: 100%;
+        }
+
+        img[alt="logo-collab-footer"] {
+            padding: 0 20px;
+        }
     </style>
 </head>
 <body>
@@ -428,4 +472,24 @@
     </form>
 </article>
 </body>
+<footer>
+    <div class="outer">
+        <div>
+            {% load static %}
+            <a href="http://collab.di.uniba.it/"><img src="{% static "myapp/logo-collab.png" %}"
+                                                      alt="logo-collab-footer" height="75px" width="200px"></a>
+            <br><strong>Collaborative Development Group</strong><br><br>Department of Computer Science
+            <br>University of Bari<br>Italy<br>
+        </div>
+        <div>
+            <h2>Contact us</h2>
+            <form action="mailto:collab-uniba@gmail.com?subject=Mini-IPIP test">
+                <button class="btn-footer" value="send-email" name="send-email" type="submit">Send an email</button>
+                </form>
+            <form onclick="location.href='/privacy'">
+                <button class="btn btn-footer" value="privacy" name="privacy" type="button">Site Privacy</button>
+            </form>
+        </div>
+    </div>
+</footer>
 </html>
