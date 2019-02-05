@@ -32,7 +32,6 @@ To change the admin password go to:
 * `/admin`
 
 ``
-  Check 'Change Password' on top right and insert old password,
-  then insert your new password.
+  Check 'Change Password' on top right and insert your new password.
 ``
 ##### Notice that the user is 'admin'
