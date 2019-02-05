@@ -11,8 +11,14 @@ from django.conf import settings
 
 def index(request, id):
     user = request.GET.get('id', '')
+    if user is '':
+        identifier = EmailToken()
+        user = get_random_string(length=6)
+        if user not in EmailToken.objects.filter(id_test=user).values_list('id_test',flat=True):
+            identifier.email = 'Anonymous User'
+            identifier.id_test = user
+            identifier.save()
     return render(request, 'myapp/index.html', {'user': user})
-
 
 def test(request, id):
     user = request.GET.get('id', id)
