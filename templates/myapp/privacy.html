@@ -6,10 +6,100 @@
             background-color: #10131c;
             background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#759685)) no-repeat fixed;
         }
+        h1{
+            padding-top: 1.5cm;
+            padding-left: 0.5cm;
+            color: whitesmoke;
+        }
+        h2{          
+            padding-top: 0.2cm;
+            padding-left: 0.5cm;
+            color: whitesmoke;
+        }
+        p{
+            color: whitesmoke;
+            margin-top: -0.2cm;
+            padding-right: 1.5cm;
+            padding-left: 0.5cm;
+        }
+        footer {
+            margin-top: 2cm;
+            font-style: normal;
+            color: whitesmoke;
+            padding: 20px 0;
+            height: 244px;
+            display: block;
+            box-sizing: border-box;
+            font-family: "Leelawadee UI Semilight", sans-serif;
+
+        }
+
+        .outer > div {
+            margin: 2px;
+            background-color: #181a27;
+            width: 100%;
+
+        }
+
+        .outer {
+            display: flex;
+            justify-content: center;
+            padding: 3px;
+            text-align: center;
+            height: 100%;
+        }
+
+        img[alt="logo-collab-footer"] {
+            padding: 0 20px;
+        }
     </style>
+    {% load static %}
     <title>mini-IPIP test</title>
+    <link rel="shortcut icon" href="{% static "myapp/favicon.ico" %}"/>
+    <a href="http://collab.di.uniba.it/"><img src="{% static "myapp/logo-collab.png" %}" alt="logo-collab" height="75px"
+                                              width="200px"></a>
+    <a href="https://www.uniba.it/"><img src="{% static "myapp/logo-uniba.png" %}"
+                                         alt="logo-uniba" height="75px" width="200px" align="right"></a>
 </head>
 <body>
-<h1 style="color: white">Insert the privacy conditions here!</h1>
+<h1>Terms and Conditions</h1>
+    <p>This website is operated by the University of  Bari, Italy. This document explains what happens to any information that you provide to us, 
+        or that we collect from you while taking the personality test (i.e., the ethics protocol for this research). We reserve the right to update 
+        this protocol but only to provide further clarification and to the extent that it does not invalidate the original intention of terms themselves.
+    </p>
+<h2>Information Collected</h2>
+    <p>We do not store any information (e.g., cookies) that your browser sends whenever you visit our website. We only collect the responses provided 
+        voluntarily by you when taking the test.
+    </p>
+<h2>Use of Your Information</h2>
+    <p>The information you submit, i.e., your responses to the test, will only be used for scientific research purposes, as defined in Recital 159 of the GDPR, 
+        which includes, for example, technological development and demonstration, fundamental research and applied research. The Information collected will appear 
+        in scientific publications only in an anonymized format or in aggregate,  so that it cannot be used to identify you or any other individual user. 
+        The information will be stored for as long as it is relevant for these scientific research purposes. Moreover, your email, which was used to reach out to
+        you, will only be used for account management and will never be shared with third parties for marketing purposes.
+    </p>
+<h2>Disclosing Your Information</h2>
+    <p>We may share the information collected by this website with other academic researchers (with a formal University affiliation and email), but only in an anonymous format such that the data cannot be used to identify you or any other individual user. We will never share or sell your data with any commercial organizations. 
+    </p>
 </body>
+<footer>
+        <div class="outer">
+            <div>
+                {% load static %}
+                <a href="http://collab.di.uniba.it/"><img src="{% static "myapp/logo-collab.png" %}"
+                                                          alt="logo-collab-footer" height="75px" width="200px"></a>
+                <br><strong>Collaborative Development Group</strong><br><br>Department of Computer Science
+                <br>University of Bari<br>Italy<br>
+            </div>
+            <div>
+                <h2>Contact us</h2>
+                <form action="mailto:collab-uniba@gmail.com?subject=Mini-IPIP test">
+                    <button class="btn-link" value="send-email" name="send-email" type="submit">Send an email</button>
+                    </form>
+                <form onclick="location.href='/privacy'">
+                    <button class="btn btn-link" value="privacy" name="privacy" type="button">Site Privacy</button>
+                </form>
+            </div>
+        </div>
+    </footer>
 </html>
