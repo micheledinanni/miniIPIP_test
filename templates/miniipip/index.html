@@ -1,119 +1,13 @@
 <html xmlns:button="http://www.w3.org/1999/html" lang="en">
 <head title="mini-IPIP test">
     <meta charset="UTF-8">
-    <style>
-        html {
-            background-color: #10131c;
-            background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#759685)) no-repeat fixed;
-        }
-
-        .btn-link {
-            color: #ffffff;
-            text-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
-            font-weight: bold;
-            background-color: transparent;
-            border-color: transparent;
-            font-family: "Leelawadee UI Semilight", serif;
-            box-shadow: none;
-            border-radius: 0;
-            cursor: pointer;
-        }
-
-        .btn-link:hover {
-            color: orange;
-        }
-
-        input[id] {
-            font-size: 24px;
-            font-family: "Leelawadee UI Semilight", serif;
-            color: white;
-            border-radius: 3px;
-            border: 3px solid #181a27;
-            background-color: #181a27;
-            text-align: center;
-            cursor: pointer;
-            padding: 0 5%;
-            box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
-        }
-
-        label[id=title] {
-            display: block;
-            color: white;
-            text-align: center;
-            line-height: 150%;
-            font-size: 50px;
-            font-family: "Leelawadee UI Semilight", serif;
-        }
-
-        label[id=content] {
-            display: block;
-            color: white;
-            text-align: left;
-            line-height: 130%;
-            font-size: 18px;
-            font-family: "Leelawadee UI Semilight", serif;
-            padding-left: 200px;
-            padding-right: 200px;
-        }
-
-        label[id=footnote] {
-            display: block;
-            color: black;
-            text-align: left;
-            line-height: 130%;
-            font-size: 14px;
-            font-family: "Leelawadee UI Semilight", serif;
-        }
-
-        input[id]:hover {
-            border: 3px solid orange;
-        }
-
-        img[alt="logo-collab"] {
-            padding: 0 100px;
-        }
-
-        img[alt="logo-uniba"] {
-            padding: 0 100px;
-        }
-
-        footer {
-            font-style: normal;
-            color: #ffffff;
-            padding: 20px 0;
-            height: 244px;
-            display: block;
-            box-sizing: border-box;
-            font-family: "Leelawadee UI Semilight", sans-serif;
-
-        }
-
-        .outer > div {
-            margin: 2px;
-            background-color: #181a27;
-            width: 100%;
-
-        }
-
-        .outer {
-            display: flex;
-            justify-content: center;
-            padding: 3px;
-            text-align: center;
-            height: 100%;
-        }
-
-        img[alt="logo-collab-footer"] {
-            padding: 0 20px;
-        }
-
-    </style>
+    <link href="../../static/miniipip/css/common.css" rel="stylesheet" type="text/css">
     {% load static %}
     <title>mini-IPIP test</title>
-    <link rel="shortcut icon" href="{% static "miniipip/favicon.ico" %}"/>
-    <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/logo-collab.png" %}" alt="logo-collab" height="75px"
+    <link rel="shortcut icon" href="{% static "miniipip/images/favicon.ico" %}"/>
+    <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/images/logo-collab.png" %}" alt="logo-collab" height="75px"
                                               width="200px"></a>
-    <a href="https://www.uniba.it/"><img src="{% static "miniipip/logo-uniba.png" %}"
+    <a href="https://www.uniba.it/"><img src="{% static "miniipip/images/logo-uniba.png" %}"
                                          alt="logo-uniba" height="75px" width="200px" align="right"></a>
     <p></p>
     <label id="title">Welcome to the mini-IPIP test </label>
@@ -139,7 +33,7 @@
     The test duration is about 3-5 minutes. Click the button below to start.<br><br><br>
 </label>
 <div align="center">
-    <input type="button" id="A"
+    <input type="button" name="choice"
            onclick="location.href='../../miniipip/test?id={{ user }}&page={{ 1 }}'" value="START TEST"/>
 </div>
 <br><br>
@@ -154,7 +48,7 @@
     <div class="outer">
         <div>
             {% load static %}
-            <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/logo-collab.png" %}"
+            <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/images/logo-collab.png" %}"
                                                       alt="logo-collab-footer" height="75px" width="200px"></a>
             <br><strong>Collaborative Development Group</strong><br><br>Department of Computer Science
             <br>University of Bari<br>Italy<br>

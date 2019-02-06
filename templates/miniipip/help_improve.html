@@ -2,117 +2,9 @@
 <html lang="en">
 <head><title>mini-IPIP test</title>
     {% load static %}
-    <link rel="shortcut icon" href="{% static "miniipip/favicon.ico" %}"/>
-    <style>
-        html {
-            font-family: "Leelawadee UI Semilight", serif;
-            background-color: #10131c;
-            background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#759685)) no-repeat fixed;   
-	}
-
-        form {
-            text-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
-            color: white;
-        }
-
-        div {
-            font-weight: bold;
-        }
-
-        label {
-            color: white;
-        }
-
-        input, select {
-            height: 35px;
-            width: 100%;
-            line-height: 1.42857143;
-            font-size: 14px;
-            border: 0;
-            border-radius: 3px;
-            padding: 0 3px;
-            color: #181a27;
-            font-family: "Leelawadee UI Semilight", serif;
-        }
-
-        .btn-primary:hover {
-            border: 3px solid orange;
-        }
-
-        .btn-primary {
-            color: #ffffff !important;
-            background-color: #181a27;
-            box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
-            border-radius: 3px;
-            font-weight: bold;
-            font-family: "Leelawadee UI Semilight", serif;
-            padding: .3em 1em;
-            border: 3px solid #181a27;
-            transition: all .3s;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .btn-link {
-            color: #181a27;
-            text-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
-            font-weight: bold;
-            background-color: transparent;
-            border-color: transparent;
-            font-family: "Leelawadee UI Semilight", serif;
-            box-shadow: none;
-            border-radius: 0;
-            cursor: pointer;
-        }
-
-        .btn-link:hover {
-            color: orange;
-        }
-        .btn-footer {
-            color: #ffffff;
-            text-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
-            font-weight: bold;
-            background-color: transparent;
-            border-color: transparent;
-            font-family: "Leelawadee UI Semilight", serif;
-            box-shadow: none;
-            border-radius: 0;
-            cursor: pointer;
-        }
-
-        .btn-footer:hover {
-            color: orange;
-        }
-        footer {
-            font-style: normal;
-            color: #ffffff;
-            padding: 20px 0;
-            height: 244px;
-            display: block;
-            box-sizing: border-box;
-            font-family: "Leelawadee UI Semilight", sans-serif;
-
-        }
-
-        .outer > div {
-            margin: 2px;
-            background-color: #181a27;
-            width: 100%;
-
-        }
-
-        .outer {
-            display: flex;
-            justify-content: center;
-            padding: 3px;
-            text-align: center;
-            height: 100%;
-        }
-
-        img[alt="logo-collab-footer"] {
-            padding: 0 20px;
-        }
-    </style>
+    <link rel="shortcut icon" href="{% static "miniipip/images/favicon.ico" %}"/>
+    <link href="../../static/miniipip/css/common.css" rel="stylesheet" type="text/css">
+    <link href="../../static/miniipip/css/help_improve_.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <article class="container-fluid">
@@ -476,7 +368,7 @@
     <div class="outer">
         <div>
             {% load static %}
-            <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/logo-collab.png" %}"
+            <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/images/logo-collab.png" %}"
                                                       alt="logo-collab-footer" height="75px" width="200px"></a>
             <br><strong>Collaborative Development Group</strong><br><br>Department of Computer Science
             <br>University of Bari<br>Italy<br>
@@ -484,10 +376,10 @@
         <div>
             <h2>Contact us</h2>
             <form action="mailto:collab-uniba@gmail.com?subject=Mini-IPIP test">
-                <button class="btn-footer" value="send-email" name="send-email" type="submit">Send an email</button>
+                <button class="btn-link" value="send-email" name="send-email" type="submit">Send an email</button>
                 </form>
             <form onclick="location.href='/privacy'">
-                <button class="btn btn-footer" value="privacy" name="privacy" type="button">Site Privacy</button>
+                <button class="btn btn-link" value="privacy" name="privacy" type="button">Site Privacy</button>
             </form>
         </div>
     </div>

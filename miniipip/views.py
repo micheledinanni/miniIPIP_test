@@ -95,7 +95,7 @@ def help_improve(request, id):
     id = request.GET.get('id')
     if request.POST.get('skip'):
         return results(request, id=id)
-    if request.POST.get('email_button'):
+    if request.POST.get('choice'):
         emailtosend = request.POST['email_string']
         if send_email(emailtosend, id) is 1:
             messages.success(request, 'The email has been sent successfully!')

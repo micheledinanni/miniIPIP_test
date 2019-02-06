@@ -1,0 +1,45 @@
+form {
+    text-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
+    color: white;
+}
+
+div {
+    font-weight: bold;
+}
+
+label {
+    color: white;
+}
+/*values to insert in form*/
+input[id], select {
+    height: 35px;
+    width: 100%;
+    line-height: 1.42857143;
+    font-size: 14px;
+    padding: 2px 2px;
+    cursor: pointer;
+    background-color: white;
+    color: white;
+    border: 3px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
+}
+/* submit and no thanks buttons */
+.btn-primary:hover {
+    border: 3px solid orange;
+}
+
+.btn-primary {
+    color: #ffffff !important;
+    background-color: #181a27;
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
+    font-weight: bold;
+    font-family: "Leelawadee UI Semilight", serif;
+    padding: .3em 1em;
+    border: 3px solid #181a27;
+    transition: all .3s;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
