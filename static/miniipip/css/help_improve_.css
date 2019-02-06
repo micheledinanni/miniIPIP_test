@@ -19,7 +19,7 @@ input[id], select {
     padding: 2px 2px;
     cursor: pointer;
     background-color: white;
-    color: white;
+    color: black;
     border: 3px;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
 }
