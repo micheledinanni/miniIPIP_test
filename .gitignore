@@ -65,6 +65,5 @@ ENV/
 
 .idea
 *.swp
-*.png
 *.mls
 .DS_Store
