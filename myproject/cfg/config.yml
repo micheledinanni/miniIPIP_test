@@ -1,10 +1,10 @@
 sqlite:
   host: localhost
   user: root
-  passwd: **** 
+  passwd: secret 
   db: db.sqlite3
 email:
   email_from: "collab.uniba@gmail.com"
-  passwd: ****
+  passwd: secret
 security:
   secret_key: 'secret'

@@ -23,7 +23,25 @@ sqlite:
 Edit the following configuration file:
 * `myproject/cfg/config.yml` - initial email to sending and password
 ```yaml
-other:
-  email_from: "michele.dinanni1@gmail.com"
-  passwd: ******
+email:
+  email_from: "collab.uniba@gmail.com"
+  passwd: ****
 ```
+## 4. Change admin password
+To change the admin password go to:
+* `/admin`
+
+``
+  Check 'Change Password' on top right and insert your new password.
+``
+##### Notice that the user is 'admin'
+------------------------------------------------------------------------------------------------------------------------------------------
+## Installation guide
+```bash
+1. $ git clone https://github.com/micheledinanni/miniIPIP_test.git 
+2. cd miniIPIP_test
+3. virtualenv venv --no-site-packages
+4. source venv/Scripts/activate
+5. pip install -r requirements.txt
+6. Edit file config.yml into this source myproject/cfg/
+7. python manage.py runserver (optionally add port)
