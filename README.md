@@ -28,14 +28,15 @@ email:
   passwd: ****
 ```
 ## 4. Change admin password
-To change the admin password go to:
+To change the admin password go into website and paste after website name:
 * `/admin`
-
-``
-  Check 'Change Password' on top right and insert your new password.
-``
-##### Notice that the user is 'admin'
-------------------------------------------------------------------------------------------------------------------------------------------
+```
+Check 'Change Password' on top right,insert previous password
+(you can take it from '/myproject/cfg/config.yml')and insert your new password.
+Then save your changes.
+```
+##### Notice that the username is 'admin'
+--------------------------------------------------------------------------------------------------------------------------------
 ## Installation guide
 ```bash
 1. $ git clone https://github.com/micheledinanni/miniIPIP_test.git 
@@ -45,3 +46,4 @@ To change the admin password go to:
 5. pip install -r requirements.txt
 6. Edit file config.yml into this source myproject/cfg/
 7. python manage.py runserver (optionally add port)
+```
