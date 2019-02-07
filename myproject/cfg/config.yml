@@ -8,3 +8,6 @@ email:
   passwd: secret
 security:
   secret_key: 'secret'
+django-admin-default-credentials:
+  username: admin
+  passwd: collab-uniba
