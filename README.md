@@ -36,9 +36,9 @@ To change the admin password go into website and paste after website name:
 * `/admin`
 Check 'Change Password' on top right,insert previous password and insert your new password.
 You can take the default password from: 
-```yaml
 * ` myproject/cfg/config.yml`
 
+```yaml
 django-admin-default-credentials:
   username: admin
   passwd: collab-uniba
