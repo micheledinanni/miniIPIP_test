@@ -11,36 +11,18 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import smtplib
 import yaml
 
-def email_from():
-    with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
-        cfg = yaml.load(ymlfile)
-        email = cfg['email'].__getitem__('email_from')
-    return email
-
-def password():
-    with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
-        cfg = yaml.load(ymlfile)
-        password = cfg['email'].__getitem__('passwd')
-    return password
 
 def secret():
-    with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
+    with open(os.path.join("myproject", "cfg", "config.yml"), "r") as ymlfile:
         cfg = yaml.load(ymlfile)
         key = cfg['security'].__getitem__('secret_key')
     return key
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = email_from()
-EMAIL_HOST_PASSWORD = password()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -52,7 +34,6 @@ SECRET_KEY = secret()
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -97,12 +78,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 def db_config():
-    with open(os.path.join("myproject","cfg","config.yml"), "r") as ymlfile:
+    with open(os.path.join("myproject", "cfg", "config.yml"), "r") as ymlfile:
         cfg = yaml.load(ymlfile)['sqlite']
     return cfg
+
 
 DATABASES = {
     'default': {
@@ -144,7 +127,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
