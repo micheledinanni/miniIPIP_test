@@ -3,10 +3,10 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.utils.crypto import get_random_string
 from .models import Question,Choice,Email,Result,Question_people,EmailToken,FurtherPeopleInfo
-from django.core.mail import send_mail
 from django.contrib.auth.models import Group,User
+from miniipip.admin_sending_mail import main_send_email
 import tkinter,json,re
-from django.conf import settings
+
 
 #actions to save the results into file .json
 def writeToJSONFile(path,fileName,data):
@@ -70,7 +70,7 @@ class Send_email(admin.ModelAdmin):
             check_send_email(email_to_send,request)
             self.message_user(request,"Email checked and sent succesfully!")
             return HttpResponseRedirect(".")
-        self.change = super.response_change(request, obj)
+        self.change = super().response_change(request, obj)
         return self.change
 
 def check_send_email(email_to_send,request):
@@ -80,18 +80,13 @@ def check_send_email(email_to_send,request):
             # check that the email hasn't already been sent and there are not duplicates
             if email not in EmailToken.objects.values_list('email', flat=True):
                 id = get_random_string(length=6)
-                oggetto = request.POST.get('oggetto')
-                text_to_send = request.POST.get('text')
-                send_mail(oggetto,
-                          text_to_send + id,
-                          settings.EMAIL_HOST_USER,
-                          recipient_list=[email],
-                          fail_silently=False)
+                subject = request.POST.get('subject')
+                text_sending = request.POST.get('text') + id
+                main_send_email(subject,text_sending,email)
                 flag = True
                 # save the token and the email in EmailToken table
                 q = EmailToken(id_test=id, email=email)
                 q.save()
-
 admin.site.register(Email,Send_email)
 admin.site.register(EmailToken,EmailTokenOne)
 
