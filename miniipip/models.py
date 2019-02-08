@@ -18,7 +18,7 @@ class Choice(models.Model):
 class Email(models.Model):
     email_line_by_line = models.TextField(default='Enter the emails here:')
     text = models.TextField(default='Enter the text here:')
-    oggetto = models.TextField(default='Enter the object here:')
+    subject = models.TextField(default='Enter the object here:')
     def __str__(self):
         return self.email_line_by_line
 

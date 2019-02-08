@@ -4,10 +4,13 @@ sqlite:
   passwd: root 
   db: db.sqlite3
 email:
-  email_from: "collab.uniba@gmail.com"
-  passwd: secret
+  email_from: 'collab.uniba@gmail.com'
+  email_host: 'secret'
+  email_host_user: "secret"
+  email_host_passwd: "secret"
+  email_port: secret
 security:
-  secret_key: '=-z@=s3n*-dk=j4h9&r9u*ns*(c&o$6(+xv9g4v2sydkm5lk=^'
+  secret_key: secret
 django-admin-default-credentials:
   username: admin
   passwd: collab-uniba
