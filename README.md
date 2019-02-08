@@ -1,7 +1,7 @@
-# Mini-Ipip test
-This test has been developed to identify the personality of Apache developers, based on this following paper:</h5>
+# mini-IPIP test
+The mini-IPIP test has been developed to identify the personality of Apache developers, based on this following paper:</h5>
 ```bash
-Donnellan MB1, Oswald FL, Baird BM, Lucas RE(2006). The mini-IPIP scales: tiny-yet-effective measures 
+Donnellan MB, Oswald FL, Baird BM, Lucas RE(2006). The mini-IPIP scales: tiny-yet-effective measures 
 of the Big Five factors of personality. DOI: 10.1037/1040-3590.18.2.192
 ```
 
