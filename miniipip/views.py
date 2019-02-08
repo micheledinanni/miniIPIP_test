@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 from .models import Question, Choice, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.db.models import Avg
 from django.conf import settings
-
+from miniipip.admin_sending_mail import main_send_email
 
 def index(request, id):
     user = request.GET.get('id', '')
@@ -83,10 +83,9 @@ def send_email(emailtosend, identifier):
         Result.objects.filter(id_test=identifier).values_list("agreeableness", flat=True)[0]) + "/5" \
                  + "\n""Neuroticism: {0}".format(
         Result.objects.filter(id_test=identifier).values_list("neuroticism", flat=True)[0]) + "/5"
-    if send_mail("My results of the MiniIPIP Test",
-                 email_text,
-                 from_email=settings.EMAIL_HOST_USER,
-                 recipient_list=[emailtosend, ], fail_silently=False) is 1:
+    if main_send_email(subject="My results of the MiniIPIP Test",
+                        text_sending=email_text,
+                        email=emailtosend) is 1:
         return 1
     return 0
 
