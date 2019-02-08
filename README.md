@@ -21,21 +21,31 @@ sqlite:
 ```
 ## 3. Initial email configuration
 Edit the following configuration file:
-* `myproject/cfg/config.yml` - initial email to sending and password
+* `myproject/cfg/config.yml` - Initial sending email, with setting of host, host user,host port and host password.
+                               It has been used the server smtp 'Amazon SES'
 ```yaml
 email:
-  email_from: "collab.uniba@gmail.com"
-  passwd: ****
+   email_from: 'collab.uniba@gmail.com'
+   email_host: 'secret'
+   email_host_user: "secret"
+   email_host_passwd: "secret"
+   email_port: secret
 ```
 ## 4. Change admin password
 To change the admin password go into website and paste after website name:
 * `/admin`
-```
-Check 'Change Password' on top right,insert previous password
-(you can take it from '/myproject/cfg/config.yml')and insert your new password.
+Check 'Change Password' on top right,insert previous password and insert your new password.
+You can take the default password from: 
+```yaml
+* ` myproject/cfg/config.yml`
+
+django-admin-default-credentials:
+  username: admin
+  passwd: collab-uniba
+```  
 Then save your changes.
-```
-##### Notice that the username is 'admin'
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 ## Installation guide
 ```bash
