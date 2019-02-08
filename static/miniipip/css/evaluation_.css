@@ -1,0 +1,72 @@
+div[id="results"] {
+    color: whitesmoke;
+}
+
+div[id="email"] {
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
+    color: whitesmoke;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+h1 {
+    font-size: 30px;
+    color: white;
+    text-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+label[id] {
+    font-size: 35px;
+    color: darkgrey;
+    text-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+label[id="detail"] {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+h3 {
+    text-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.35);
+    color: white;
+}
+
+h2 {
+    margin-top: 30px;
+    color: whitesmoke;
+}
+
+h1[id="msg"] {
+    color: #35445D;
+    border-color: #181a27;
+}
+
+p[id="content"] {
+    font-size: 14px;
+    margin-top: -20px;
+    color: lightgrey;
+}
+
+p[id="description"] {
+    margin-top: -10px;
+    text-align: left;
+}
+
+.info {
+    background-color: whitesmoke;
+    border-radius: 3px;
+}
+
+input[id="email_string"] {
+            height: 35px;
+            width: 15%;
+            line-height: 1.42857143;
+            font-size: 14px;
+            border: 0;
+            border-radius: 3px;
+            padding: 0 3px;
+            color: #181a27;
+            font-family: "Leelawadee UI Semilight", serif;
+        }

@@ -14,7 +14,7 @@ import os
 import smtplib
 import yaml
 
-def email_from():    
+def email_from():
     with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
         cfg = yaml.load(ymlfile)
         email = cfg['email'].__getitem__('email_from')
@@ -30,7 +30,7 @@ def secret():
     with open(os.path.join("myproject","cfg","config.yml"),"r") as ymlfile:
         cfg = yaml.load(ymlfile)
         key = cfg['security'].__getitem__('secret_key')
-    return key    
+    return key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,7 +49,7 @@ EMAIL_HOST_PASSWORD = password()
 SECRET_KEY = secret()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -62,13 +62,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     'miniipip',
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
