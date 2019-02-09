@@ -1,11 +1,11 @@
 version: "2"
 services:
   django:
-    container_name: mini-ipip_django_server
+    container_name: my-django
     build:
       context: .
       dockerfile: Dockerfile
-    image: docker_mini-ipip_django
+    image: collabuniba/mini-ipip
     stdin_open: true
     tty: true
     volumes:
