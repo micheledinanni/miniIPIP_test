@@ -4,8 +4,12 @@ html {
     background: -webkit-gradient(linear, left top, left bottom, from(#10131c), to(#759685)) no-repeat fixed;
 }
 
+h3{
+    margin-top: 1.80em;
+}
+
 .btn-link {
-    color: #ffffff;
+    color: whitesmoke;
     text-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.35);
     font-weight: bold;
     background-color: transparent;
@@ -14,6 +18,7 @@ html {
     box-shadow: none;
     border-radius: 0;
     cursor: pointer;
+    margin-top: -10px;
 }
 
 .btn-link:hover {
@@ -23,7 +28,7 @@ html {
 input[name="choice"] {
     font-size: 24px;
     font-family: "Leelawadee UI Semilight", serif;
-    color: white;
+    color: whitesmoke;
     border-radius: 3px;
     border: 3px solid #181a27;
     background-color: #181a27;
@@ -35,7 +40,7 @@ input[name="choice"] {
 
 label[id=title] {
     display: block;
-    color: white;
+    color: whitesmoke;
     text-align: center;
     line-height: 150%;
     font-size: 50px;
@@ -44,7 +49,7 @@ label[id=title] {
 
 label[id=content] {
     display: block;
-    color: white;
+    color: whitesmoke;
     text-align: left;
     line-height: 130%;
     font-size: 18px;
@@ -77,13 +82,12 @@ img[alt="logo-uniba"] {
 footer {
     font-style: normal;
     color: whitesmoke;
-    margin-top: 2cm;
+    margin-top: 1cm;
     padding: 20px 0;
-    height: 244px;
+    height: 180px;
     display: block;
     box-sizing: border-box;
     font-family: "Leelawadee UI Semilight", sans-serif;
-
 }
 
 .outer > div {
