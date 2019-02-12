@@ -16,6 +16,7 @@ class Choice(models.Model):
         return self.choice_text
 
 class Email(models.Model):
+    block = models.AutoField(primary_key=True)
     email_line_by_line = models.TextField(default='Enter the emails here:')
     text = models.TextField(default='Enter the text here:')
     subject = models.TextField(default='Enter the object here:')

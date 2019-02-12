@@ -1,12 +1,10 @@
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Question, Choice, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.db.models import Avg
-from django.conf import settings
 from miniipip.admin_sending_mail import main_send_email
 
 def index(request, id):
