@@ -21,7 +21,7 @@ class Email(models.Model):
     text = models.TextField(default='Enter the text here:')
     subject = models.TextField(default='Enter the object here:')
     def __str__(self):
-        return self.email_line_by_line
+        return "block " + self.block.__str__()
 
 class Result(models.Model):
     id_test = models.CharField(max_length=10,primary_key=True)
