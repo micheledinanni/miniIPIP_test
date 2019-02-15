@@ -57,7 +57,7 @@ SMTP_PSW = email_host_passwd()
 
 # MAIL Constants
 MAIL_SENDER = email_from()
-BCC = [email_from()]
+
 
 class EmailThread(threading.Thread):
     def __init__(self, name):
@@ -79,10 +79,10 @@ class EmailThread(threading.Thread):
             smtp_session.starttls()
             smtp_session.login(SMTP_USER, SMTP_PSW)
             for mail in ModelEmail.email:
+                msg['To'] = mail
                 id = get_random_string(length=6)
                 text = msg.as_string().format(id)
-                msg['To'] = mail
-                smtp_session.sendmail(MAIL_SENDER,[mail,BCC],text)
+                smtp_session.sendmail(MAIL_SENDER, [MAIL_SENDER, mail], text)
                 save_into_file(mail, id)
                 save_for_ajax(1, len(ModelEmail.email))
                 time.sleep(9)
