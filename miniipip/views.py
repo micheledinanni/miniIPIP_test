@@ -70,7 +70,7 @@ def results(request, id):
 
 
 def send_email(emailtosend, identifier):
-    email_text = "I performed the mini-IPIP test on and i got the following scores: \n\n" \
+    email_text = "I performed the mini-IPIP test and got the following scores: \n\n" \
                  "Openness: {0}".format(
         Result.objects.filter(id_test=identifier).values_list("openness", flat=True)[0]) + "/5" \
                  + "\n""Coscientiousness: {0}".format(
@@ -81,7 +81,7 @@ def send_email(emailtosend, identifier):
         Result.objects.filter(id_test=identifier).values_list("agreeableness", flat=True)[0]) + "/5" \
                  + "\n""Neuroticism: {0}".format(
         Result.objects.filter(id_test=identifier).values_list("neuroticism", flat=True)[0]) + "/5"
-    if main_send_email(subject="My results of the MiniIPIP Test",
+    if main_send_email(subject="My results of the Big 5 personality test",
                         text_sending=email_text,
                         email=emailtosend) is 1:
         return 1
