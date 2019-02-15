@@ -53,7 +53,6 @@ SMTP_PSW = email_host_passwd()
 # MAIL Constants
 MAIL_SENDER = email_from()
 
-
 class EmailThread(threading.Thread):
     def __init__(self, name):
         threading.Thread.__init__(self)
