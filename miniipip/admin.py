@@ -1,11 +1,15 @@
+import csv
+import os
 from tkinter import filedialog
-from django.contrib import admin
+
+from django import forms
+from django.contrib import admin, messages
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.utils.crypto import get_random_string
 from .models import Question, Choice, Email, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.contrib.auth.models import Group, User
-from miniipip.admin_sending_mail import main_send_email
 import tkinter, json, re
+from miniipip.admin_sending_mail import ModelEmail, running
 
 
 # actions to save the results into file .json
@@ -72,33 +76,50 @@ admin.site.register(Question, QuestionAdmin)
 
 class Send_email(admin.ModelAdmin):
     list_display = ('block',)
-
     change_form_template = "admin/change_.html"
 
     def response_change(self, request, obj):
         if "send-mail" in request.POST:
             # take the emails from text area and send to people with different tokens
             email_to_send = request.POST.get('email_line_by_line').splitlines()
-            check_send_email(email_to_send, request)
+            checked_mail = check_send_email(email_to_send)
+            if len(checked_mail) is not 0:
+                subject = request.POST.get('subject')
+                text_sending = request.POST.get('text')
+                ModelEmail.subject = subject
+                ModelEmail.text = text_sending
+                ModelEmail.email = checked_mail
+                running()
+                read_saving()
             self.message_user(request, "Email checked and sent succesfully!")
             return HttpResponseRedirect(".")
         self.change = super().response_change(request, obj)
         return self.change
 
 
-def check_send_email(email_to_send, request):
+def read_saving():
+    with open('myproject/ajax_files/data.csv', 'r') as f:
+        s = csv.DictReader(f)
+        for row in s:
+            q = EmailToken(email=row['email'], id_test=row['token'])
+            if q.email != 'email' and q.id_test != 'token':
+                q.save()
+    f.close()
+    os.remove('myproject/ajax_files/data.csv')
+
+
+
+
+
+def check_send_email(email_to_send):
+    mailing_list = []
     for email in email_to_send:
         # verify that the emails are correct syntactically
         if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
             # check that the email hasn't already been sent and there are not duplicates
             if email not in EmailToken.objects.values_list('email', flat=True):
-                id = get_random_string(length=6)
-                subject = request.POST.get('subject')
-                text_sending = request.POST.get('text').format(id)
-                main_send_email(subject, text_sending, email)
-                # save the token and the email in EmailToken table
-                q = EmailToken(id_test=id, email=email)
-                q.save()
+                mailing_list.append(email)
+    return mailing_list
 
 
 admin.site.register(Email, Send_email)

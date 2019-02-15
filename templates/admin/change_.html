@@ -1,7 +1,19 @@
 {% extends "admin/change_form.html" %}
 {% block submit_buttons_bottom %}
-{{ block.super }}
-<div class="submit-row">
-    <input type="submit" value="Send e-mail" name="send-mail">
-</div>
+    {{ block.super }}
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <link href="/static/admin/css/progress_.css" type="text/css" rel="stylesheet">
+    </head>
+    <div class="submit-row">
+        <div align="left"><span class="status"></span></div>
+            <input type="submit" value="Send e-mail" name="send-mail">
+    </div>
+    <script src="/static/admin/js/ajax_polling.js"></script>
+    <div id="myProgress">
+        <div id="myBar"></div>
+    </div>
 {% endblock %}
+
+
+

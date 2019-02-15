@@ -3,20 +3,23 @@ from django.utils.crypto import get_random_string
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from miniipip.sending_client_mails import ModelEmail
+from miniipip.sending_client_mails import client_send_mail
 from .models import Question, Choice, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.db.models import Avg
-from miniipip.admin_sending_mail import main_send_email
+
 
 def index(request, id):
     user = request.GET.get('id', '')
     if user is '':
         identifier = EmailToken()
         user = get_random_string(length=6)
-        if user not in EmailToken.objects.filter(id_test=user).values_list('id_test',flat=True):
+        if user not in EmailToken.objects.filter(id_test=user).values_list('id_test', flat=True):
             identifier.email = 'Anonymous User'
             identifier.id_test = user
             identifier.save()
     return render(request, 'miniipip/index.html', {'user': user})
+
 
 def test(request, id):
     user = request.GET.get('id', id)
@@ -60,17 +63,17 @@ def results(request, id):
                coscientiousness=coscientiousness, neuroticism=neuroticism)
     p.save()
     if email == 'Anonymous User':
-        email= ''
+        email = ''
     return render(request, 'miniipip/evaluation.html', {'openness': openness,
-                                                     'coscientiousness': coscientiousness,
-                                                     'extraversion': extraversion,
-                                                     'agreeableness': agreeableness,
-                                                     'neuroticism': neuroticism,
-                                                     'email': email})
+                                                        'coscientiousness': coscientiousness,
+                                                        'extraversion': extraversion,
+                                                        'agreeableness': agreeableness,
+                                                        'neuroticism': neuroticism,
+                                                        'email': email})
 
 
 def send_email(emailtosend, identifier):
-    email_text = "I performed the mini-IPIP test and got the following scores: \n\n" \
+    email_text = "I performed the mini-IPIP test and got the following scores:: \n\n" \
                  "Openness: {0}".format(
         Result.objects.filter(id_test=identifier).values_list("openness", flat=True)[0]) + "/5" \
                  + "\n""Coscientiousness: {0}".format(
@@ -81,11 +84,11 @@ def send_email(emailtosend, identifier):
         Result.objects.filter(id_test=identifier).values_list("agreeableness", flat=True)[0]) + "/5" \
                  + "\n""Neuroticism: {0}".format(
         Result.objects.filter(id_test=identifier).values_list("neuroticism", flat=True)[0]) + "/5"
-    if main_send_email(subject="My results of the Big 5 personality test",
-                        text_sending=email_text,
-                        email=emailtosend) is 1:
+    ModelEmail.email = emailtosend
+    ModelEmail.text = email_text
+    if client_send_mail() is 1:
         return 1
-    return 0
+    else: return 0
 
 
 def help_improve(request, id):
@@ -128,5 +131,6 @@ def redirect_root(request):
         obj.save()
     return HttpResponseRedirect('/miniipip?id={0}'.format(id))
 
+
 def privacy(request):
-    return render(request,'miniipip/privacy.html')
+    return render(request, 'miniipip/privacy.html')

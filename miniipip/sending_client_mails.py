@@ -1,18 +1,13 @@
-import csv
-import json
 import smtplib, time, os, yaml, threading
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from pathlib import Path
-from django.utils.crypto import get_random_string
 
 
 class ModelEmail():
     subject = None
     text = None
     email = None
-    token = None
-
+    flag = None
 
 def email_from():
     with open(os.path.join("myproject", "cfg", "config.yml"), "r") as ymlfile:
@@ -65,12 +60,9 @@ class EmailThread(threading.Thread):
         self.name = name
 
     def run(self):
-        global smtp_session
-        clean_file_json()
-        Path('myproject/ajax_files/data.csv').touch()
         msg = MIMEMultipart()
         msg['From'] = MAIL_SENDER
-        msg['Subject'] = ModelEmail.subject
+        msg['Subject'] = 'My results of the Big 5 personality test'
         body = ModelEmail.text
         msg.attach(MIMEText(body, 'plain'))
         try:
@@ -78,56 +70,22 @@ class EmailThread(threading.Thread):
             smtp_session.ehlo()
             smtp_session.starttls()
             smtp_session.login(SMTP_USER, SMTP_PSW)
-            for mail in ModelEmail.email:
-                id = get_random_string(length=6)
-                text = msg.as_string().format(id)
-                msg['To'] = mail
-                smtp_session.sendmail(MAIL_SENDER, mail, text)
-                save_into_file(mail, id)
-                save_for_ajax(1, len(ModelEmail.email))
-                time.sleep(9)
+            text = msg.as_string()
+            msg['To'] = ModelEmail.email
+            smtp_session.sendmail(MAIL_SENDER, ModelEmail.email, text)
+            time.sleep(5)
         except Exception:
-            save_for_ajax(0, len(ModelEmail.email))
-            smtp_session.quit()
-            return 0
+            ModelEmail.flag = 0
+            return
         smtp_session.quit()
+        ModelEmail.flag = 1
+        return
 
-
-def running():
+def client_send_mail():
     EmailThread1 = EmailThread(name='Sending email')
     EmailThread1.start()
     EmailThread1.join()
+    if ModelEmail.flag is 1:
+        return 1
+    else:return 0
 
-
-def save_into_file(email, token):
-    with open('myproject/ajax_files/data.csv', 'a') as csvfile:
-        fieldnames = ['email', 'token', 'send']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerow({'email': email, 'token': token})
-        csvfile.close()
-
-
-def save_for_ajax(value, number_of_emails):
-    with open('myproject/ajax_files/status.json', 'r')as f:
-        data = json.load(f)
-        if value is 1:
-            data["number_of_emails_sent"] = data["number_of_emails_sent"] + 1
-        else:
-            data["number_of_not_sent_emails"] = data["number_of_not_sent_emails"] + 1
-    with open('myproject/ajax_files/status.json', 'w') as write:
-        values = {"number_of_emails_sent": data["number_of_emails_sent"],
-                  "number_of_total_emails": number_of_emails,
-                  "number_of_not_sent_emails": data["number_of_not_sent_emails"]}
-        json.dump(values, write)
-        f.close()
-        write.close()
-
-
-def clean_file_json():
-    with open('myproject/ajax_files/status.json', 'w') as f:
-        data = {"number_of_emails_sent": 0,
-                "number_of_total_emails": 0,
-                "number_of_not_sent_emails": 0}
-        json.dump(data, f)
-        f.close()
