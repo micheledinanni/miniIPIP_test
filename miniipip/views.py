@@ -7,6 +7,7 @@ from miniipip.sending_client_mails import ModelEmail
 from miniipip.sending_client_mails import client_send_mail
 from .models import Question, Choice, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.db.models import Avg
+from miniipip.chronometer import Chronometer
 
 
 def index(request, id):
@@ -21,11 +22,17 @@ def index(request, id):
     return render(request, 'miniipip/index.html', {'user': user})
 
 
+# create a chronometer to take test time
+Chronometer_1 = Chronometer()
+
+
 def test(request, id):
     user = request.GET.get('id', id)
     question_list = Question.objects.all()
     paginator = Paginator(question_list, 1)
     page = request.GET.get('page')
+    if int(page) is 1:
+        Chronometer_1.start()
     questions = paginator.get_page(page)
     if int(page) is Question.objects.count() + 1:
         return help_improve(request, id=id)
@@ -59,9 +66,9 @@ def results(request, id):
     extraversion = Question_people.objects.filter(id_test=user).filter(cat='E').aggregate(mean=Avg('score'))['mean']
     agreeableness = Question_people.objects.filter(id_test=user).filter(cat='A').aggregate(mean=Avg('score'))['mean']
     neuroticism = Question_people.objects.filter(id_test=user).filter(cat='N').aggregate(mean=Avg('score'))['mean']
-    p = Result(id_test=user, email=email, extraversion=extraversion, agreeableness=agreeableness, openness=openness,
-               coscientiousness=coscientiousness, neuroticism=neuroticism)
-    p.save()
+    Result.objects.filter(id_test=id).update(id_test=user, email=email, extraversion=extraversion,
+                                             agreeableness=agreeableness, openness=openness,
+                                             coscientiousness=coscientiousness, neuroticism=neuroticism)
     if email == 'Anonymous User':
         email = ''
     return render(request, 'miniipip/evaluation.html', {'openness': openness,
@@ -88,10 +95,15 @@ def send_email(emailtosend, identifier):
     ModelEmail.text = email_text
     if client_send_mail() is 1:
         return 1
-    else: return 0
+    else:
+        return 0
 
 
 def help_improve(request, id):
+    identity = request.GET.get('id', id)
+    Chronometer_1.stop()
+    result_time = Result(id_test=identity, time=Chronometer_1.get_elapsed_time())
+    result_time.save()
     id = request.GET.get('id')
     if request.POST.get('skip'):
         return results(request, id=id)

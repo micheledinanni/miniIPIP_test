@@ -1,10 +1,6 @@
-import csv
-import os
+import csv, os
 from tkinter import filedialog
-
-from django import forms
-from django.contrib import admin, messages
-from django.shortcuts import render
+from django.contrib import admin
 from django.http import HttpResponseRedirect
 from .models import Question, Choice, Email, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.contrib.auth.models import Group, User
@@ -39,7 +35,8 @@ def save_as_json_people_quest(modeladmin, request, queryset):
 
 class PeopleAvg(admin.ModelAdmin):
     actions = [save_as_json_results, ]
-    list_display = ('id_test', 'email', 'openness', 'coscientiousness', 'extraversion', 'agreeableness', 'neuroticism')
+    list_display = (
+        'id_test', 'time', 'email', 'openness', 'coscientiousness', 'extraversion', 'agreeableness', 'neuroticism')
 
 
 class EmailTokenOne(admin.ModelAdmin):
@@ -91,7 +88,7 @@ class Send_email(admin.ModelAdmin):
                 ModelEmail.email = checked_mail
                 running()
                 read_saving()
-            self.message_user(request, "Email checked and sent succesfully!")
+            self.message_user(request, "Done!")
             return HttpResponseRedirect(".")
         self.change = super().response_change(request, obj)
         return self.change
@@ -106,9 +103,6 @@ def read_saving():
                 q.save()
     f.close()
     os.remove('myproject/ajax_files/data.csv')
-
-
-
 
 
 def check_send_email(email_to_send):
