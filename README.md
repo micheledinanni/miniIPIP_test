@@ -44,8 +44,18 @@ django-admin-default-credentials:
   passwd: collab-uniba
 ```  
 Then save your changes.
+## 5. Send email into admin
+To match the token created for every user, use this syntax into the text of email:
+* `your-url-site/miniipip?id={0}`
+It is automatically associated a token to take the test.
 
-
+## 6. Information
+```yaml
+Every e-mail in the admin is sent every 9 seconds
+`The display of the progress to sending emails can be viewed every 10 seconds 
+  (the page updates automatically every 10 seconds).
+You will see a progress bar and a message to know on-time the sending-progress. 
+```
 --------------------------------------------------------------------------------------------------------------------------------
 ## Installation guide
 ```bash
@@ -57,3 +67,4 @@ Then save your changes.
 6. Edit file config.yml into this source myproject/cfg/
 7. python manage.py runserver (optionally add port)
 ```
+

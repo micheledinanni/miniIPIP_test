@@ -5,6 +5,7 @@
     <link rel="shortcut icon" href="{% static "miniipip/images/favicon.ico" %}"/>
     <link href="../../static/miniipip/css/common.css" rel="stylesheet" type="text/css">
     <link href="../../static/miniipip/css/help_improve_.css" rel="stylesheet" type="text/css">
+    <script src="../../static/miniipip/js/datetimepicker_css.js"></script>
 </head>
 <body>
 <article class="container-fluid">
@@ -15,7 +16,8 @@
         <div class="form-group">
             <label for="day_of_birth">Date of birth</label>
             <div class="input-group">
-                <input id="day_of_birth" name="day_of_birth" type="date">
+                <input type="text" id="day_of_birth" name="day_of_birth" placeholder="mm-dd-yyyy"
+                       onclick="NewCssCal('day_of_birth')">
             </div>
         </div>
         <p></p>
@@ -357,9 +359,9 @@
         </div>
         <p></p>
         <div class="form-group row text-right" align="right">
-        {% csrf_token %}
-        <button class="btn btn-link" value="skip" name="skip" type="submit"> No Thanks</button>
-        <button class="btn btn-primary" value="submit" name="submit" type="submit">Submit</button>
+            {% csrf_token %}
+            <button class="btn btn-link" value="skip" name="skip" type="submit"> No Thanks</button>
+            <button class="btn btn-primary" value="submit" name="submit" type="submit">Submit</button>
         </div>
     </form>
 </article>
@@ -369,15 +371,15 @@
         <div>
             {% load static %}
             <a href="http://collab.di.uniba.it/"><img src="{% static "miniipip/images/logo-collab.png" %}"
-                                                      alt="logo-collab-footer" height="75px" width="200px"></a>
-            <br><strong>Collaborative Development Group</strong><br><br>Department of Computer Science
-            <br>University of Bari<br>Italy<br>
+                                                      alt="logo-collab-footer" height="65px"></a>
+            <br><strong>Collaborative Development Group</strong><br>Department of Computer Science
+            <br>University of Bari, Italy
         </div>
         <div>
-            <h2>Contact us</h2>
+            <h3>Contact us</h3>
             <form action="mailto:collab-uniba@gmail.com?subject=Mini-IPIP test">
                 <button class="btn-link" value="send-email" name="send-email" type="submit">Send an email</button>
-                </form>
+            </form>
             <form onclick="location.href='/privacy'">
                 <button class="btn btn-link" value="privacy" name="privacy" type="button">Site Privacy</button>
             </form>
