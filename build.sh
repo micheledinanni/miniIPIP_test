@@ -19,4 +19,7 @@ echo Pushing Docker image $IMAGE:$TAG
 docker push $IMAGE:$TAG
 
 echo $TAG > release
+git commit release -m "Update release number"
+
 git checkout myproject/cfg/config.yml
+git push
