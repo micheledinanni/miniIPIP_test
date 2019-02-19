@@ -20,10 +20,13 @@ class Choice(models.Model):
 
 
 class Email(models.Model):
+    df_subject = open ("default_email_subject.txt", "r").read()
+    df_text = open ("default_email_text.txt", "r").read()
+
     block = models.AutoField(primary_key=True)
-    email_line_by_line = models.TextField(default='Enter the emails here:')
-    text = models.TextField(default='Enter the text here:')
-    subject = models.TextField(default='Enter the object here:')
+    email_line_by_line = models.TextField(default="Enter the emails here:")
+    text = models.TextField(default=df_text)
+    subject = models.TextField(default=df_subject)
 
     def __str__(self):
         return "block " + self.block.__str__()
