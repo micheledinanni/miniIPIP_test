@@ -59,16 +59,24 @@ def vote(request, id, question_id, page):
 
 
 def results(request, id):
+    Chronometer_1.stop()
     user = request.GET.get('id', id)
+    time_elapsed = Chronometer_1.get_elapsed_time()
     email = EmailToken.objects.filter(id_test=user).values_list('email', flat=True)[0]
     openness = Question_people.objects.filter(id_test=user).filter(cat='O').aggregate(mean=Avg('score'))['mean']
     coscientiousness = Question_people.objects.filter(id_test=user).filter(cat='C').aggregate(mean=Avg('score'))['mean']
     extraversion = Question_people.objects.filter(id_test=user).filter(cat='E').aggregate(mean=Avg('score'))['mean']
     agreeableness = Question_people.objects.filter(id_test=user).filter(cat='A').aggregate(mean=Avg('score'))['mean']
     neuroticism = Question_people.objects.filter(id_test=user).filter(cat='N').aggregate(mean=Avg('score'))['mean']
-    Result.objects.filter(id_test=id).update(id_test=user, email=email, extraversion=extraversion,
-                                             agreeableness=agreeableness, openness=openness,
-                                             coscientiousness=coscientiousness, neuroticism=neuroticism)
+    if user in Result.objects.filter(id_test=user).values_list('id_test', flat=True):
+        Result.objects.filter(id_test=id).update(id_test=user, time=time_elapsed, email=email,
+                                                 extraversion=extraversion,
+                                                 agreeableness=agreeableness, openness=openness,
+                                                 coscientiousness=coscientiousness, neuroticism=neuroticism)
+    else:
+        q = Result(id_test=user, time=time_elapsed, email=email, extraversion=extraversion, agreeableness=agreeableness,
+               openness=openness, coscientiousness=coscientiousness, neuroticism=neuroticism)
+        q.save()
     if email == 'Anonymous User':
         email = ''
     return render(request, 'miniipip/evaluation.html', {'openness': openness,
@@ -79,7 +87,8 @@ def results(request, id):
                                                         'email': email})
 
 
-def send_email(emailtosend, identifier):
+def send_email(request, emailtosend, identifier):
+    results(request, identifier)
     email_text = "I performed the mini-IPIP test and got the following scores:: \n\n" \
                  "Openness: {0}".format(
         Result.objects.filter(id_test=identifier).values_list("openness", flat=True)[0]) + "/5" \
@@ -100,16 +109,13 @@ def send_email(emailtosend, identifier):
 
 
 def help_improve(request, id):
-    identity = request.GET.get('id', id)
-    Chronometer_1.stop()
-    result_time = Result(id_test=identity, time=Chronometer_1.get_elapsed_time())
-    result_time.save()
-    id = request.GET.get('id')
+    id = request.GET.get('id', id)
+    results(request, id)
     if request.POST.get('skip'):
         return results(request, id=id)
     if request.POST.get('choice'):
         emailtosend = request.POST['email_string']
-        if send_email(emailtosend, id) is 1:
+        if send_email(request, emailtosend, id) is 1:
             messages.success(request, 'The email has been sent successfully!')
         return results(request, id=id)
     if request.POST.get('submit'):
@@ -127,7 +133,18 @@ def help_improve(request, id):
                 if '? undefined:undefined ?' in further_info.born in further_info.gender in further_info.ethnicity \
                         in further_info.level_school in further_info.employment:
                     raise Exception
-            further_info.save()
+                else:
+                    further_info.save()
+            else:
+                if id not in FurtherPeopleInfo.objects.filter(id_test=id).values_list('id_test', flat=True)[0]:
+                    further_info.save()
+                else:
+                    FurtherPeopleInfo.objects.filter(id_test=id).update(date_of_birth=further_info.date_of_birth,
+                                                                        born=further_info.born,
+                                                                        gender=further_info.gender,
+                                                                        ethnicity=further_info.ethnicity,
+                                                                        level_school=further_info.level_school,
+                                                                        employment=further_info.employment)
         except Exception:
             pass
         return results(request, id=id)
