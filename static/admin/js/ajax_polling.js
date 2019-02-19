@@ -7,8 +7,8 @@
                 type: 'get',
                 success: function (data) { // check if available
                     if (data.number_of_emails_sent !== 0 && data.number_of_emails_sent <= data.number_of_total_emails) {
-                        status.text('Sent ' + data.number_of_emails_sent + ' ' + 'of ' + data.number_of_total_emails + ' emails'
-                                    + ' ' + data.number_of_not_sent_emails + ' emails have not been sent');
+                        status.text('Sent ' + data.number_of_emails_sent + ' ' + 'out of ' + data.number_of_total_emails + ' emails'
+                                    + '\n' + data.number_of_not_sent_emails + ' more emails to go');
                         var elem = document.getElementById("myBar");
                         var width = 0;
                         var id = setInterval(frame, 1);
