@@ -1,9 +1,11 @@
 import csv
-import json
+import json, logging
 import smtplib, time, os, yaml, threading
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
+
+from django.contrib import messages
 from django.utils.crypto import get_random_string
 
 
@@ -65,33 +67,34 @@ class EmailThread(threading.Thread):
         self.name = name
 
     def run(self):
+        logger = logging.getLogger(__name__)
         global smtp_session
         clean_file_json()
         Path('myproject/ajax_files/data.csv').touch()
-        msg = MIMEMultipart()
-        msg['From'] = MAIL_SENDER
-        msg['Subject'] = ModelEmail.subject
-        body = ModelEmail.text
-        msg.attach(MIMEText(body, 'plain'))
         try:
-            smtp_session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-            smtp_session.ehlo()
-            smtp_session.starttls()
-            smtp_session.login(SMTP_USER, SMTP_PSW)
             for mail in ModelEmail.email:
+                smtp_session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+                smtp_session.ehlo()
+                smtp_session.starttls()
+                smtp_session.login(SMTP_USER, SMTP_PSW)
+                msg = MIMEMultipart()
+                msg['From'] = MAIL_SENDER
+                msg['Subject'] = ModelEmail.subject
                 msg['To'] = mail
+                body = ModelEmail.text
+                msg.attach(MIMEText(body, 'plain'))
                 id = get_random_string(length=6)
                 text = msg.as_string().format(id)
                 smtp_session.sendmail(MAIL_SENDER, [MAIL_SENDER, mail], text)
                 save_into_file(mail, id)
                 save_for_ajax(1, len(ModelEmail.email))
-                time.sleep(9)
-        except Exception:
+                smtp_session.quit()
+        except Exception as e:
+            logger.error(e)
             save_for_ajax(0, len(ModelEmail.email))
             smtp_session.quit()
             return 0
         clean_file_json()
-        smtp_session.quit()
 
 
 def running():
