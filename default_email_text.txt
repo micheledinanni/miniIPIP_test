@@ -1,0 +1,17 @@
+(** Apologies for multiple emails **)
+
+Dear Apache developer,
+
+We are a team of researchers from the Collab research group (http://collab.di.uniba.it), in the Department of Computer Science at the University of Bari, Italy. We would be grateful if you could help us understand the effects of developers' different personalities when they collaborate in the development of OSS projects.
+
+Being an Apache developer, you are kindly invited to take a brief personality test (the so-called Big Five mini-IPIP test), which only takes *3 minutes* to complete (we promise!):
+Link: http://collab.di.uniba.it:8000/miniipip/?id={0}
+
+For more, please read "M.B. Donnellan et al. (2006). The mini-IPIP scales: Tiny-yet-effective measures of the Big Five factors of personality. Psychological Assessment, 18, 192-203"
+
+All survey responses will be stored on a secure server in our University data center. We will openly publish the results so everyone can benefit from them, but we will anonymize and/or present them in aggregate so that tracking answers back to the respondents will be impossible. By filling in and submitting the survey, you are providing implied consent to participate in the study. However, if at some point during the survey you want to stop, you are free to do so and your partial answers will be discarded. Should you have further privacy concerns, please review the details of the ethics protocol for this research available at http://collab.di.uniba.it/mini-IPIP/privacy or contact us by email.
+
+We appreciate your participation. Thank you for taking the time for reading this email.
+
+Kind regards,
+The Collab research team

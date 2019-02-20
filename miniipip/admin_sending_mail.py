@@ -90,6 +90,7 @@ class EmailThread(threading.Thread):
             save_for_ajax(0, len(ModelEmail.email))
             smtp_session.quit()
             return 0
+        clean_file_json()
         smtp_session.quit()
 
 

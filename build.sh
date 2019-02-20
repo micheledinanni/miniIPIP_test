@@ -5,6 +5,16 @@ increment_version ()
   echo $1 | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}'
 } 
 
+# check docker is running at all
+{
+  # will throw an error if the docker daemon is not running and jump
+  # to the next code chunk     
+  docker ps -q
+} || {
+  echo "Docker is not running. Please start docker on your computer"
+  exit -1
+}
+
 TAG=$(cat release)
 TAG=$(increment_version $TAG)
 
