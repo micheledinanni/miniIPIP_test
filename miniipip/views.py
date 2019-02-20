@@ -3,8 +3,8 @@ from django.utils.crypto import get_random_string
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from miniipip.sending_client_mails import ModelEmail
-from miniipip.sending_client_mails import client_send_mail
+from miniipip.sending_client_mails import ModelEmail, client_send_mail
+from myproject.logger import logger_file
 from .models import Question, Choice, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.db.models import Avg
 from miniipip.chronometer import Chronometer
@@ -27,36 +27,42 @@ Chronometer_1 = Chronometer()
 
 
 def test(request, id):
-    user = request.GET.get('id', id)
-    question_list = Question.objects.all()
-    paginator = Paginator(question_list, 1)
-    page = request.GET.get('page')
-    if int(page) is 1:
-        Chronometer_1.start()
-    questions = paginator.get_page(page)
-    if int(page) is Question.objects.count() + 1:
-        return help_improve(request, id=id)
-    else:
-        return render(request, 'miniipip/test.html', {'user': user, 'questions': questions, 'page': page})
-
+    try:
+        user = request.GET.get('id', id)
+        question_list = Question.objects.all()
+        paginator = Paginator(question_list, 1)
+        page = request.GET.get('page')
+        if int(page) is 1:
+            Chronometer_1.start()
+        questions = paginator.get_page(page)
+        if int(page) is Question.objects.count() + 1:
+            return help_improve(request, id=id)
+        else:
+            return render(request, 'miniipip/test.html', {'user': user, 'questions': questions, 'page': page})
+    except Exception as e:
+        error = str(e)
+        logger_file(error)
 
 def vote(request, id, question_id, page):
-    pagina = int(page) + 1
-    email = EmailToken.objects.filter(id_test=id).values_list('email', flat=True)[0]
-    question = get_object_or_404(Question, pk=question_id)
-    scelta = request.POST.get('choice')
-    choice = Choice.objects.filter(question=question_id).filter(choice_text=scelta).values_list('punteggio', flat=True)[
-        0]
-    q = Question_people(id_test=id, email=email, question=question_id, score=choice, cat=question.cat)
+   try:
+        pagina = int(page) + 1
+        email = EmailToken.objects.filter(id_test=id).values_list('email', flat=True)[0]
+        question = get_object_or_404(Question, pk=question_id)
+        scelta = request.POST.get('choice')
+        choice = Choice.objects.filter(question=question_id).filter(choice_text=scelta).values_list('punteggio', flat=True)[
+            0]
+        q = Question_people(id_test=id, email=email, question=question_id, score=choice, cat=question.cat)
 
-    # if the score is already in the table, it will be replaced by new score
-    if Question_people.objects.filter(id_test=id).filter(question=question_id):
-        Question_people.objects.filter(id_test=id).filter(question=question_id).update(question=question_id,
-                                                                                       score=choice)
-    else:
-        q.save()
-    return HttpResponseRedirect('/miniipip/test?id={0}'.format(id) + '&page={0}'.format(pagina))
-
+        # if the score is already in the table, it will be replaced by new score
+        if Question_people.objects.filter(id_test=id).filter(question=question_id):
+            Question_people.objects.filter(id_test=id).filter(question=question_id).update(question=question_id,
+                                                                                           score=choice)
+        else:
+            q.save()
+        return HttpResponseRedirect('/miniipip/test?id={0}'.format(id) + '&page={0}'.format(pagina))
+   except Exception as e:
+       error = str(e)
+       logger_file(error)
 
 def results(request, id):
     Chronometer_1.stop()
@@ -75,7 +81,7 @@ def results(request, id):
                                                  coscientiousness=coscientiousness, neuroticism=neuroticism)
     else:
         q = Result(id_test=user, time=time_elapsed, email=email, extraversion=extraversion, agreeableness=agreeableness,
-               openness=openness, coscientiousness=coscientiousness, neuroticism=neuroticism)
+                   openness=openness, coscientiousness=coscientiousness, neuroticism=neuroticism)
         q.save()
     if email == 'Anonymous User':
         email = ''

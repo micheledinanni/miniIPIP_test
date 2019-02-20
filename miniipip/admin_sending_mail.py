@@ -1,11 +1,9 @@
-import csv
-import json, logging
-import smtplib, time, os, yaml, threading
+import json, csv
+import smtplib, os, yaml, threading
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
-
-from django.contrib import messages
+from myproject.logger import logger_file
 from django.utils.crypto import get_random_string
 
 
@@ -67,7 +65,6 @@ class EmailThread(threading.Thread):
         self.name = name
 
     def run(self):
-        logger = logging.getLogger(__name__)
         global smtp_session
         clean_file_json()
         Path('myproject/ajax_files/data.csv').touch()
@@ -90,10 +87,10 @@ class EmailThread(threading.Thread):
                 save_for_ajax(1, len(ModelEmail.email))
                 smtp_session.quit()
         except Exception as e:
-            logger.error(e)
+            error = str(e)
+            logger_file(error)
             save_for_ajax(0, len(ModelEmail.email))
             smtp_session.quit()
-            return 0
         clean_file_json()
 
 

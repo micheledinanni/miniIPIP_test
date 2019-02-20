@@ -88,7 +88,6 @@ class Send_email(admin.ModelAdmin):
                 ModelEmail.email = checked_mail
                 running()
                 read_saving()
-            self.message_user(request, "Done!")
             return HttpResponseRedirect(".")
         self.change = super().response_change(request, obj)
         return self.change
