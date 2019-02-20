@@ -29,6 +29,6 @@
         },
         pollInterval = setInterval(function () { // run function every 2000 ms
             poll();
-        }, 10000);
+        }, 5000);
     poll(); // also run function on init
 })();
