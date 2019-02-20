@@ -1,6 +1,7 @@
 import smtplib, time, os, yaml, threading
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from myproject.logger import logger_file
 
 
 class ModelEmail():
@@ -8,6 +9,7 @@ class ModelEmail():
     text = None
     email = None
     flag = None
+
 
 def email_from():
     with open(os.path.join("myproject", "cfg", "config.yml"), "r") as ymlfile:
@@ -53,18 +55,20 @@ SMTP_PSW = email_host_passwd()
 # MAIL Constants
 MAIL_SENDER = email_from()
 
+
 class EmailThread(threading.Thread):
     def __init__(self, name):
         threading.Thread.__init__(self)
         self.name = name
 
     def run(self):
-        msg = MIMEMultipart()
-        msg['From'] = MAIL_SENDER
-        msg['Subject'] = 'My results of the Big 5 personality test'
-        body = ModelEmail.text
-        msg.attach(MIMEText(body, 'plain'))
+
         try:
+            msg = MIMEMultipart()
+            msg['From'] = MAIL_SENDER
+            msg['Subject'] = 'My results of the Big 5 personality test'
+            body = ModelEmail.text
+            msg.attach(MIMEText(body, 'plain'))
             smtp_session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
             smtp_session.ehlo()
             smtp_session.starttls()
@@ -73,12 +77,15 @@ class EmailThread(threading.Thread):
             msg['To'] = ModelEmail.email
             smtp_session.sendmail(MAIL_SENDER, ModelEmail.email, text)
             time.sleep(5)
-        except Exception:
+        except Exception as e:
             ModelEmail.flag = 0
+            error = str(e)
+            logger_file(error)
             return
         smtp_session.quit()
         ModelEmail.flag = 1
         return
+
 
 def client_send_mail():
     EmailThread1 = EmailThread(name='Sending email')
@@ -86,5 +93,5 @@ def client_send_mail():
     EmailThread1.join()
     if ModelEmail.flag is 1:
         return 1
-    else:return 0
-
+    else:
+        return 0
