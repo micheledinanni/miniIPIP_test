@@ -1,4 +1,6 @@
 # mini-IPIP test
+[![DOI](https://zenodo.org/badge/168340876.svg)](https://zenodo.org/badge/latestdoi/168340876)
+
 The mini-IPIP test has been developed to identify the personality of Apache developers, based on this following paper:</h5>
 ```bash
 Donnellan MB, Oswald FL, Baird BM, Lucas RE(2006). The mini-IPIP scales: tiny-yet-effective measures 
