@@ -79,13 +79,12 @@ class Send_email(admin.ModelAdmin):
         if "send-mail" in request.POST:
             # take the emails from text area and send to people with different tokens
             email_to_send = request.POST.get('email_line_by_line').splitlines()
-            checked_mail = check_send_email(email_to_send)
-            if len(checked_mail) is not 0:
+            if len(email_to_send) is not 0:
                 subject = request.POST.get('subject')
                 text_sending = request.POST.get('text')
                 ModelEmail.subject = subject
                 ModelEmail.text = text_sending
-                ModelEmail.email = checked_mail
+                ModelEmail.email = email_to_send
                 running()
                 read_saving()
             return HttpResponseRedirect(".")
@@ -102,17 +101,6 @@ def read_saving():
                 q.save()
     f.close()
     os.remove('myproject/ajax_files/data.csv')
-
-
-def check_send_email(email_to_send):
-    mailing_list = []
-    for email in email_to_send:
-        # verify that the emails are correct syntactically
-        if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
-            # check that the email hasn't already been sent and there are not duplicates
-            if email not in EmailToken.objects.values_list('email', flat=True):
-                mailing_list.append(email)
-    return mailing_list
 
 
 admin.site.register(Email, Send_email)
