@@ -79,28 +79,36 @@ class Send_email(admin.ModelAdmin):
         if "send-mail" in request.POST:
             # take the emails from text area and send to people with different tokens
             email_to_send = request.POST.get('email_line_by_line').splitlines()
-            if len(email_to_send) is not 0:
+            checked_mail = check_send_email(email_to_send)
+            if len(checked_mail) is not 0:
                 subject = request.POST.get('subject')
                 text_sending = request.POST.get('text')
                 ModelEmail.subject = subject
                 ModelEmail.text = text_sending
-                ModelEmail.email = email_to_send
+                ModelEmail.email = checked_mail
                 running()
-                read_saving()
+                clean_file_json()
             return HttpResponseRedirect(".")
         self.change = super().response_change(request, obj)
         return self.change
 
 
-def read_saving():
-    with open('myproject/ajax_files/data.csv', 'r') as f:
-        s = csv.DictReader(f)
-        for row in s:
-            q = EmailToken(email=row['email'], id_test=row['token'])
-            if q.email != 'email' and q.id_test != 'token':
-                q.save()
-    f.close()
-    os.remove('myproject/ajax_files/data.csv')
+
+def clean_file_json():
+    with open('myproject/ajax_files/status.json', 'w') as f:
+        data = {"number_of_emails_sent": 0,
+                "number_of_total_emails": 0,
+                "number_of_not_sent_emails": 0}
+        json.dump(data, f)
+        f.close()
+
+def check_send_email(email_to_send):
+    mailing_list = []
+    for email in email_to_send:
+        # check that the email hasn't already been sent and there are not duplicates
+        if email not in EmailToken.objects.values_list('email', flat=True):
+            mailing_list.append(email)
+    return mailing_list
 
 
 admin.site.register(Email, Send_email)
