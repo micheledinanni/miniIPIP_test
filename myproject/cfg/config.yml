@@ -1,8 +1,9 @@
-sqlite:
+database:
+  server: mysql
   host: localhost
   user: root
   passwd: root 
-  db: db.sqlite3
+  db: mini_ipip_db
 email:
   email_from: 'collab.uniba@gmail.com'
   email_host: 'secret'
