@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import yaml
+from sqlalchemy_utils.functions.database import create_database, database_exists
+from sqlalchemy import create_engine
 
 
 def secret():
@@ -83,13 +85,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 def db_config():
     with open(os.path.join("myproject", "cfg", "config.yml"), "r") as ymlfile:
-        cfg = yaml.load(ymlfile)['sqlite']
+        cfg = yaml.load(ymlfile)['database']
+    engine = create_engine('{0}://{1}:{2}@{3}/{4}'.format(cfg['server'], cfg['user'], cfg['passwd'],cfg['host'], cfg['db'] ))
+    if not database_exists(engine.url):
+        create_database(engine.url)
     return cfg
 
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': db_config().__getitem__('db'),
         'USER': db_config().__getitem__('user'),
         'PASSWORD': db_config().__getitem__('passwd'),
