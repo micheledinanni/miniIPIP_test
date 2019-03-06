@@ -5,7 +5,10 @@ from email.mime.text import MIMEText
 from pathlib import Path
 from myproject.logger import logger_file
 from django.utils.crypto import get_random_string
+from .models import EmailToken
 
+class Email_token_to_save():
+    id = None
 
 class ModelEmail():
     subject = None
@@ -60,53 +63,44 @@ MAIL_SENDER = email_from()
 
 
 class EmailThread(threading.Thread):
-    def __init__(self, name):
+    def __init__(self, name, mail):
         threading.Thread.__init__(self)
         self.name = name
+        self.mail = mail
 
     def run(self):
         global smtp_session
-        clean_file_json()
-        Path('myproject/ajax_files/data.csv').touch()
         try:
-            for mail in ModelEmail.email:
-                smtp_session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-                smtp_session.ehlo()
-                smtp_session.starttls()
-                smtp_session.login(SMTP_USER, SMTP_PSW)
-                msg = MIMEMultipart()
-                msg['From'] = MAIL_SENDER
-                msg['Subject'] = ModelEmail.subject
-                msg['To'] = mail
-                body = ModelEmail.text
-                msg.attach(MIMEText(body, 'plain'))
-                id = get_random_string(length=6)
-                text = msg.as_string().format(id)
-                smtp_session.sendmail(MAIL_SENDER, [MAIL_SENDER, mail], text)
-                save_into_file(mail, id)
-                save_for_ajax(1, len(ModelEmail.email))
-                smtp_session.quit()
+            smtp_session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+            smtp_session.ehlo()
+            smtp_session.starttls()
+            smtp_session.login(SMTP_USER, SMTP_PSW)
+            msg = MIMEMultipart()
+            msg['From'] = MAIL_SENDER
+            msg['Subject'] = ModelEmail.subject
+            msg['To'] = self.mail
+            body = ModelEmail.text
+            msg.attach(MIMEText(body, 'plain'))
+            id = get_random_string(length=6)
+            text = msg.as_string().format(id)
+            Email_token_to_save.id = id
+            smtp_session.sendmail(MAIL_SENDER, [MAIL_SENDER, self.mail], text)
+            save_for_ajax(1, len(ModelEmail.email))
+            smtp_session.quit()
         except Exception as e:
             error = str(e)
             logger_file(error)
             save_for_ajax(0, len(ModelEmail.email))
             smtp_session.quit()
-        clean_file_json()
 
 
 def running():
-    EmailThread1 = EmailThread(name='Sending email')
-    EmailThread1.start()
-    EmailThread1.join()
-
-
-def save_into_file(email, token):
-    with open('myproject/ajax_files/data.csv', 'a') as csvfile:
-        fieldnames = ['email', 'token', 'send']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerow({'email': email, 'token': token})
-        csvfile.close()
+    for email in ModelEmail.email:
+        EmailThread1 = EmailThread(name='Sending email to{0}'.format(email), mail=email)
+        EmailThread1.start()
+        EmailThread1.join()
+        q = EmailToken(id_test=Email_token_to_save.id,email=email)
+        q.save()
 
 
 def save_for_ajax(value, number_of_emails):
@@ -125,10 +119,4 @@ def save_for_ajax(value, number_of_emails):
         write.close()
 
 
-def clean_file_json():
-    with open('myproject/ajax_files/status.json', 'w') as f:
-        data = {"number_of_emails_sent": 0,
-                "number_of_total_emails": 0,
-                "number_of_not_sent_emails": 0}
-        json.dump(data, f)
-        f.close()
+

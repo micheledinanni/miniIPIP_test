@@ -1,4 +1,4 @@
-import smtplib, time, os, yaml, threading
+import smtplib , os, yaml, threading
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from myproject.logger import logger_file
@@ -62,29 +62,26 @@ class EmailThread(threading.Thread):
         self.name = name
 
     def run(self):
-
+        global smtp_session
         try:
-            msg = MIMEMultipart()
-            msg['From'] = MAIL_SENDER
-            msg['Subject'] = 'My results of the Big 5 personality test'
-            body = ModelEmail.text
-            msg.attach(MIMEText(body, 'plain'))
             smtp_session = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
             smtp_session.ehlo()
             smtp_session.starttls()
             smtp_session.login(SMTP_USER, SMTP_PSW)
-            text = msg.as_string()
+            msg = MIMEMultipart()
+            msg['From'] = MAIL_SENDER
+            msg['Subject'] = 'My results of the Big 5 personality test'
             msg['To'] = ModelEmail.email
-            smtp_session.sendmail(MAIL_SENDER, ModelEmail.email, text)
-            time.sleep(5)
+            body = ModelEmail.text
+            msg.attach(MIMEText(body, 'plain'))
+            text = msg.as_string()
+            smtp_session.sendmail(MAIL_SENDER, [MAIL_SENDER, ModelEmail.email], text)
+            smtp_session.quit()
+            ModelEmail.flag = 1
         except Exception as e:
-            ModelEmail.flag = 0
             error = str(e)
             logger_file(error)
-            return
-        smtp_session.quit()
-        ModelEmail.flag = 1
-        return
+            smtp_session.quit()
 
 
 def client_send_mail():

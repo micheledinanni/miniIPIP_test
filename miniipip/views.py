@@ -12,13 +12,16 @@ from miniipip.chronometer import Chronometer
 
 def index(request, id):
     user = request.GET.get('id', '')
-    if user is '':
-        identifier = EmailToken()
-        user = get_random_string(length=6)
-        if user not in EmailToken.objects.filter(id_test=user).values_list('id_test', flat=True):
+    if user not in EmailToken.objects.filter(id_test=user).values_list('id_test', flat=True):
+        if user is '':
+            identifier = EmailToken()
+            user = get_random_string(length=6)
             identifier.email = 'Anonymous User'
             identifier.id_test = user
             identifier.save()
+        else:
+            q = EmailToken(id_test=user)
+            q.save()
     return render(request, 'miniipip/index.html', {'user': user})
 
 
@@ -43,13 +46,15 @@ def test(request, id):
         error = str(e)
         logger_file(error)
 
+
 def vote(request, id, question_id, page):
-   try:
+    try:
         pagina = int(page) + 1
         email = EmailToken.objects.filter(id_test=id).values_list('email', flat=True)[0]
         question = get_object_or_404(Question, pk=question_id)
         scelta = request.POST.get('choice')
-        choice = Choice.objects.filter(question=question_id).filter(choice_text=scelta).values_list('punteggio', flat=True)[
+        choice = \
+        Choice.objects.filter(question=question_id).filter(choice_text=scelta).values_list('punteggio', flat=True)[
             0]
         q = Question_people(id_test=id, email=email, question=question_id, score=choice, cat=question.cat)
 
@@ -60,9 +65,10 @@ def vote(request, id, question_id, page):
         else:
             q.save()
         return HttpResponseRedirect('/miniipip/test?id={0}'.format(id) + '&page={0}'.format(pagina))
-   except Exception as e:
-       error = str(e)
-       logger_file(error)
+    except Exception as e:
+        error = str(e)
+        logger_file(error)
+
 
 def results(request, id):
     Chronometer_1.stop()
