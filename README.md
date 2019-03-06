@@ -9,7 +9,7 @@ of the Big Five factors of personality. DOI: 10.1037/1040-3590.18.2.192
 ```bash
 $ git clone https://github.com/micheledinanni/miniIPIP_test.git
 ```
-## 2. DB Configuration 
+## 2.1 DB Configuration 
 Edit the following configuration file:
 * `myproject/cfg/config.yml` - mysql database configuration 
 ```yaml
@@ -20,6 +20,12 @@ database:
   passwd: ****
   db: mini_ipip_db
 ```
+## 2.2 Data configuration
+To import question and answers into db, run following commands:
+* `python manage.py makemigrations miniipip`
+* `python manage.py migrate`
+* `python manage.py loaddata db.json`
+
 ## 3. Initial email configuration
 Edit the following configuration file:
 * `myproject/cfg/config.yml` - Initial sending email, with setting of host, host user,host port and host password.
