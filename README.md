@@ -11,13 +11,14 @@ $ git clone https://github.com/micheledinanni/miniIPIP_test.git
 ```
 ## 2. DB Configuration 
 Edit the following configuration file:
-* `myproject/cfg/config.yml` - sqlite database configuration 
+* `myproject/cfg/config.yml` - mysql database configuration 
 ```yaml
-sqlite:
+database:
+  server : mysql
   host: localhost
   user: root
   passwd: ****
-  db: db.sqlite3
+  db: mini_ipip_db
 ```
 ## 3. Initial email configuration
 Edit the following configuration file:
