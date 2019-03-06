@@ -1,0 +1,2180 @@
+[
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "miniipip",
+      "model": "choice"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "miniipip",
+      "model": "email"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "miniipip",
+      "model": "emailtoken"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "miniipip",
+      "model": "furtherpeopleinfo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "miniipip",
+      "model": "question"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "miniipip",
+      "model": "question_people"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "miniipip",
+      "model": "result"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "ls1z1l2ndfrn01j416l0w9kaqdngnop8",
+    "fields": {
+      "session_data": "MGE4MDYyZGFlOWFjNDUyMjVlYmJlZjBjNGZlM2M0MTMyZjZiOTYwNjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJkYjlmNWJjNWRjYzVmN2ZkNzM4ZWVlMTM1ZDQ4ZDA0YmI1MzUyYzZkIn0=",
+      "expire_date": "2019-03-20T11:51:49.403Z"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 1,
+    "fields": {
+      "question_text": "I am the life of the party",
+      "cat": "E"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 2,
+    "fields": {
+      "question_text": "I sympathize with others' feelings",
+      "cat": "A"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 3,
+    "fields": {
+      "question_text": "I get chores done right away",
+      "cat": "C"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 4,
+    "fields": {
+      "question_text": "I have frequent mood swings",
+      "cat": "N"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 5,
+    "fields": {
+      "question_text": "I have a vivid imagination",
+      "cat": "O"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 6,
+    "fields": {
+      "question_text": "I don't talk a lot",
+      "cat": "E"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 7,
+    "fields": {
+      "question_text": "I am not interested in other people's problems",
+      "cat": "A"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 8,
+    "fields": {
+      "question_text": "I often forget to put things back in their proper place",
+      "cat": "C"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 9,
+    "fields": {
+      "question_text": "I am relaxed most of the time",
+      "cat": "N"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 10,
+    "fields": {
+      "question_text": "I am not interested in abstract ideas",
+      "cat": "O"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 11,
+    "fields": {
+      "question_text": "I talk to a lot of different people at parties",
+      "cat": "E"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 12,
+    "fields": {
+      "question_text": "I feel others' emotions",
+      "cat": "A"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 13,
+    "fields": {
+      "question_text": "I like order",
+      "cat": "C"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 14,
+    "fields": {
+      "question_text": "I get upset easily",
+      "cat": "N"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 15,
+    "fields": {
+      "question_text": "I have difficulty understanding abstract ideas",
+      "cat": "O"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 16,
+    "fields": {
+      "question_text": "I keep in the background",
+      "cat": "E"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 17,
+    "fields": {
+      "question_text": "I am not really interested in others",
+      "cat": "A"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 18,
+    "fields": {
+      "question_text": "I make a mess of things",
+      "cat": "C"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 19,
+    "fields": {
+      "question_text": "I seldom feel blue",
+      "cat": "N"
+    }
+  },
+  {
+    "model": "miniipip.question",
+    "pk": 20,
+    "fields": {
+      "question_text": "I do not have a good imagination",
+      "cat": "O"
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 1,
+    "fields": {
+      "question": 1,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 2,
+    "fields": {
+      "question": 1,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 3,
+    "fields": {
+      "question": 1,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 4,
+    "fields": {
+      "question": 1,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 5,
+    "fields": {
+      "question": 1,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 6,
+    "fields": {
+      "question": 2,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 7,
+    "fields": {
+      "question": 2,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 8,
+    "fields": {
+      "question": 2,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 9,
+    "fields": {
+      "question": 2,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 10,
+    "fields": {
+      "question": 2,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 11,
+    "fields": {
+      "question": 3,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 12,
+    "fields": {
+      "question": 3,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 13,
+    "fields": {
+      "question": 3,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 14,
+    "fields": {
+      "question": 3,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 15,
+    "fields": {
+      "question": 3,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 16,
+    "fields": {
+      "question": 4,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 17,
+    "fields": {
+      "question": 4,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 18,
+    "fields": {
+      "question": 4,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 19,
+    "fields": {
+      "question": 4,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 20,
+    "fields": {
+      "question": 4,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 21,
+    "fields": {
+      "question": 5,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 22,
+    "fields": {
+      "question": 5,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 23,
+    "fields": {
+      "question": 5,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 24,
+    "fields": {
+      "question": 5,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 25,
+    "fields": {
+      "question": 5,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 26,
+    "fields": {
+      "question": 6,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 27,
+    "fields": {
+      "question": 6,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 28,
+    "fields": {
+      "question": 6,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 29,
+    "fields": {
+      "question": 6,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 30,
+    "fields": {
+      "question": 6,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 31,
+    "fields": {
+      "question": 7,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 32,
+    "fields": {
+      "question": 7,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 33,
+    "fields": {
+      "question": 7,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 34,
+    "fields": {
+      "question": 7,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 35,
+    "fields": {
+      "question": 7,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 36,
+    "fields": {
+      "question": 8,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 37,
+    "fields": {
+      "question": 8,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 38,
+    "fields": {
+      "question": 8,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 39,
+    "fields": {
+      "question": 8,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 40,
+    "fields": {
+      "question": 8,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 41,
+    "fields": {
+      "question": 9,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 42,
+    "fields": {
+      "question": 9,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 43,
+    "fields": {
+      "question": 9,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 44,
+    "fields": {
+      "question": 9,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 45,
+    "fields": {
+      "question": 9,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 46,
+    "fields": {
+      "question": 10,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 47,
+    "fields": {
+      "question": 10,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 48,
+    "fields": {
+      "question": 10,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 49,
+    "fields": {
+      "question": 10,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 50,
+    "fields": {
+      "question": 10,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 51,
+    "fields": {
+      "question": 11,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 52,
+    "fields": {
+      "question": 11,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 53,
+    "fields": {
+      "question": 11,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 54,
+    "fields": {
+      "question": 11,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 55,
+    "fields": {
+      "question": 11,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 56,
+    "fields": {
+      "question": 12,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 57,
+    "fields": {
+      "question": 12,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 58,
+    "fields": {
+      "question": 12,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 59,
+    "fields": {
+      "question": 12,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 60,
+    "fields": {
+      "question": 12,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 61,
+    "fields": {
+      "question": 13,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 62,
+    "fields": {
+      "question": 13,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 63,
+    "fields": {
+      "question": 13,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 64,
+    "fields": {
+      "question": 13,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 65,
+    "fields": {
+      "question": 13,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 66,
+    "fields": {
+      "question": 14,
+      "choice_text": "Very Accurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 67,
+    "fields": {
+      "question": 14,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 68,
+    "fields": {
+      "question": 14,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 69,
+    "fields": {
+      "question": 14,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 70,
+    "fields": {
+      "question": 14,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 71,
+    "fields": {
+      "question": 15,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 72,
+    "fields": {
+      "question": 15,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 73,
+    "fields": {
+      "question": 15,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 74,
+    "fields": {
+      "question": 15,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 75,
+    "fields": {
+      "question": 15,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 76,
+    "fields": {
+      "question": 16,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 77,
+    "fields": {
+      "question": 16,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 78,
+    "fields": {
+      "question": 16,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 79,
+    "fields": {
+      "question": 16,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 80,
+    "fields": {
+      "question": 16,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 81,
+    "fields": {
+      "question": 17,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 82,
+    "fields": {
+      "question": 17,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 83,
+    "fields": {
+      "question": 17,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 84,
+    "fields": {
+      "question": 17,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 85,
+    "fields": {
+      "question": 17,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 86,
+    "fields": {
+      "question": 18,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 87,
+    "fields": {
+      "question": 18,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 88,
+    "fields": {
+      "question": 18,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 89,
+    "fields": {
+      "question": 18,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 90,
+    "fields": {
+      "question": 18,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 91,
+    "fields": {
+      "question": 19,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 92,
+    "fields": {
+      "question": 19,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 93,
+    "fields": {
+      "question": 19,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 94,
+    "fields": {
+      "question": 19,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 95,
+    "fields": {
+      "question": 19,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 96,
+    "fields": {
+      "question": 20,
+      "choice_text": "Very Accurate",
+      "punteggio": 1
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 97,
+    "fields": {
+      "question": 20,
+      "choice_text": "Moderately Accurate",
+      "punteggio": 2
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 98,
+    "fields": {
+      "question": 20,
+      "choice_text": "Neither Accurate Nor Inaccurate",
+      "punteggio": 3
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 99,
+    "fields": {
+      "question": 20,
+      "choice_text": "Moderately Inaccurate",
+      "punteggio": 4
+    }
+  },
+  {
+    "model": "miniipip.choice",
+    "pk": 100,
+    "fields": {
+      "question": 20,
+      "choice_text": "Very Inaccurate",
+      "punteggio": 5
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add choice",
+      "content_type": 7,
+      "codename": "add_choice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change choice",
+      "content_type": 7,
+      "codename": "change_choice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete choice",
+      "content_type": 7,
+      "codename": "delete_choice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view choice",
+      "content_type": 7,
+      "codename": "view_choice"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add email",
+      "content_type": 8,
+      "codename": "add_email"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change email",
+      "content_type": 8,
+      "codename": "change_email"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete email",
+      "content_type": 8,
+      "codename": "delete_email"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view email",
+      "content_type": 8,
+      "codename": "view_email"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add email token",
+      "content_type": 9,
+      "codename": "add_emailtoken"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change email token",
+      "content_type": 9,
+      "codename": "change_emailtoken"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete email token",
+      "content_type": 9,
+      "codename": "delete_emailtoken"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view email token",
+      "content_type": 9,
+      "codename": "view_emailtoken"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add further people info",
+      "content_type": 10,
+      "codename": "add_furtherpeopleinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change further people info",
+      "content_type": 10,
+      "codename": "change_furtherpeopleinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete further people info",
+      "content_type": 10,
+      "codename": "delete_furtherpeopleinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view further people info",
+      "content_type": 10,
+      "codename": "view_furtherpeopleinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add question",
+      "content_type": 11,
+      "codename": "add_question"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change question",
+      "content_type": 11,
+      "codename": "change_question"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete question",
+      "content_type": 11,
+      "codename": "delete_question"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view question",
+      "content_type": 11,
+      "codename": "view_question"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add question_people",
+      "content_type": 12,
+      "codename": "add_question_people"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change question_people",
+      "content_type": 12,
+      "codename": "change_question_people"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete question_people",
+      "content_type": 12,
+      "codename": "delete_question_people"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view question_people",
+      "content_type": 12,
+      "codename": "view_question_people"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add result",
+      "content_type": 13,
+      "codename": "add_result"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change result",
+      "content_type": 13,
+      "codename": "change_result"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete result",
+      "content_type": 13,
+      "codename": "delete_result"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view result",
+      "content_type": 13,
+      "codename": "view_result"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$120000$x2guq96O16eq$bINU2qVYB+1lqedNWBcojpkhn1PCYqdGwKFRxtNGRhg=",
+      "last_login": "2019-03-06T11:51:49.294Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2019-03-06T11:34:40.351Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2019-03-06T11:35:11.048Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "2",
+      "object_repr": "EmailToken object (2)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2019-03-06T11:35:11.157Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "EmailToken object (1)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2019-03-06T11:40:08.793Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "block 1",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2019-03-06T11:40:29.876Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "block 1",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2019-03-06T11:41:37.858Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "6",
+      "object_repr": "EmailToken object (6)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2019-03-06T11:41:37.983Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "5",
+      "object_repr": "EmailToken object (5)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2019-03-06T11:41:38.123Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "4",
+      "object_repr": "EmailToken object (4)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2019-03-06T11:41:38.217Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "3",
+      "object_repr": "EmailToken object (3)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2019-03-06T11:41:38.311Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "2",
+      "object_repr": "EmailToken object (2)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2019-03-06T11:41:38.420Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "1",
+      "object_repr": "EmailToken object (1)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2019-03-06T11:41:52.032Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "block 1",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2019-03-06T11:51:58.622Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "13",
+      "object_repr": "EmailToken object (13)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2019-03-06T11:51:58.748Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "12",
+      "object_repr": "EmailToken object (12)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2019-03-06T11:51:58.842Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "11",
+      "object_repr": "EmailToken object (11)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2019-03-06T11:51:58.951Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "10",
+      "object_repr": "EmailToken object (10)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2019-03-06T11:51:59.091Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "9",
+      "object_repr": "EmailToken object (9)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2019-03-06T11:51:59.217Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "8",
+      "object_repr": "EmailToken object (8)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2019-03-06T11:51:59.341Z",
+      "user": 1,
+      "content_type": 9,
+      "object_id": "7",
+      "object_repr": "EmailToken object (7)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2019-03-06T11:52:09.053Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "block 1",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.142Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "20",
+      "object_repr": "Question_people object (20)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.220Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "19",
+      "object_repr": "Question_people object (19)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.314Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "18",
+      "object_repr": "Question_people object (18)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.423Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "17",
+      "object_repr": "Question_people object (17)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.486Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "16",
+      "object_repr": "Question_people object (16)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.596Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "15",
+      "object_repr": "Question_people object (15)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.658Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "14",
+      "object_repr": "Question_people object (14)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.767Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "13",
+      "object_repr": "Question_people object (13)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.877Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "12",
+      "object_repr": "Question_people object (12)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+      "action_time": "2019-03-06T11:52:20.939Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "11",
+      "object_repr": "Question_people object (11)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.033Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "10",
+      "object_repr": "Question_people object (10)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.111Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "9",
+      "object_repr": "Question_people object (9)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.189Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "8",
+      "object_repr": "Question_people object (8)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.267Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "7",
+      "object_repr": "Question_people object (7)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.330Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "6",
+      "object_repr": "Question_people object (6)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.392Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "5",
+      "object_repr": "Question_people object (5)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.455Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "4",
+      "object_repr": "Question_people object (4)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.533Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "3",
+      "object_repr": "Question_people object (3)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.674Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "2",
+      "object_repr": "Question_people object (2)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+      "action_time": "2019-03-06T11:52:21.767Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "1",
+      "object_repr": "Question_people object (1)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+      "action_time": "2019-03-06T11:52:30.280Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "maico",
+      "object_repr": "Result object (maico)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  }
+]
