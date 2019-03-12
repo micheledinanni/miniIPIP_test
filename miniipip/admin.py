@@ -1,36 +1,33 @@
-import csv, os
-from tkinter import filedialog
-from django.contrib import admin
+import os, json
+from django.contrib import admin, messages
 from django.http import HttpResponseRedirect
 from .models import Question, Choice, Email, Result, Question_people, EmailToken, FurtherPeopleInfo
 from django.contrib.auth.models import Group, User
-import tkinter, json, re
+from myproject.logger import logger_file
 from miniipip.admin_sending_mail import ModelEmail, running
 
 
 # actions to save the results into file .json
-def writeToJSONFile(path, fileName, data):
-    filePathNameWExt = '' + path + '/' + fileName + '.json'
-    with open(filePathNameWExt, 'w') as fp:
-        json.dump(data, fp)
+def writeToJSONFile(fileName, data):
+    filePathNameWExt = fileName
+    try:
+        with open(os.path.join("miniipip", "results", "{0}.json".format(filePathNameWExt)), "w") as fp:
+            json.dump(data, fp, indent=4)
+            return 1
+    except Exception as e:
+        logger_file(e)
 
 
 def save_as_json_results(modeladmin, request, queryset):
-    top = tkinter.Tk()
-    in_path = filedialog.askdirectory()
-    top.destroy()
-    top.mainloop()
     results = list(Result.objects.values())
-    writeToJSONFile(in_path, 'Results', results)
+    if writeToJSONFile('results', results)is 1:
+        messages.success(request,"Saved correctly!")
 
 
 def save_as_json_people_quest(modeladmin, request, queryset):
-    top = tkinter.Tk()
-    in_path = filedialog.askdirectory()
-    top.destroy()
-    top.mainloop()
     results = list(Question_people.objects.values())
-    writeToJSONFile(in_path, 'PeopleQuestions', results)
+    if writeToJSONFile('people_questions', results)is 1:
+        messages.success(request,"Saved correctly!")
 
 
 class PeopleAvg(admin.ModelAdmin):
@@ -93,7 +90,6 @@ class Send_email(admin.ModelAdmin):
         return self.change
 
 
-
 def clean_file_json():
     with open('myproject/ajax_files/status.json', 'w') as f:
         data = {"number_of_emails_sent": 0,
@@ -101,6 +97,7 @@ def clean_file_json():
                 "number_of_not_sent_emails": 0}
         json.dump(data, f)
         f.close()
+
 
 def check_send_email(email_to_send):
     mailing_list = []
