@@ -1,4 +1,4 @@
-import os, json
+import os, json, datetime
 from django.contrib import admin, messages
 from django.http import HttpResponseRedirect
 from .models import Question, Choice, Email, Result, Question_people, EmailToken, FurtherPeopleInfo
@@ -9,9 +9,11 @@ from miniipip.admin_sending_mail import ModelEmail, running
 
 # actions to save the results into file .json
 def writeToJSONFile(fileName, data):
+    now = datetime.datetime.now()
     filePathNameWExt = fileName
     try:
-        with open(os.path.join("miniipip", "results", "{0}.json".format(filePathNameWExt)), "w") as fp:
+        with open(os.path.join("miniipip", "results", "{0}{1}.json".format(filePathNameWExt, now.strftime('%m-%d-%y'))),
+                  "w") as fp:
             json.dump(data, fp, indent=4)
             return 1
     except Exception as e:
@@ -20,14 +22,14 @@ def writeToJSONFile(fileName, data):
 
 def save_as_json_results(modeladmin, request, queryset):
     results = list(Result.objects.values())
-    if writeToJSONFile('results', results)is 1:
-        messages.success(request,"Saved correctly!")
+    if writeToJSONFile('results', results) is 1:
+        messages.success(request, "Saved correctly!")
 
 
 def save_as_json_people_quest(modeladmin, request, queryset):
     results = list(Question_people.objects.values())
-    if writeToJSONFile('people_questions', results)is 1:
-        messages.success(request,"Saved correctly!")
+    if writeToJSONFile('people_questions', results) is 1:
+        messages.success(request, "Saved correctly!")
 
 
 class PeopleAvg(admin.ModelAdmin):
