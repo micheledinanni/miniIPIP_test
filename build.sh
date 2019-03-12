@@ -11,7 +11,6 @@ increment_version ()
   # to the next code chunk     
   docker ps -q
 } || {
-  echo "Docker is not running. Please start docker on your computer"
   exit -1
 }
 
@@ -32,4 +31,4 @@ echo $TAG > release
 git commit release -m "Update release number"
 
 git checkout myproject/cfg/config.yml
-git push
+git push uniba master
