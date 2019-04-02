@@ -9,7 +9,7 @@ Link: http://collab.di.uniba.it:8000/miniipip/?id={0}
 
 For more, please read "M.B. Donnellan et al. (2006). The mini-IPIP scales: Tiny-yet-effective measures of the Big Five factors of personality. Psychological Assessment, 18, 192-203"
 
-All survey responses will be stored on a secure server in our University data center. We will openly publish the results so everyone can benefit from them, but we will anonymize and/or present them in aggregate so that tracking answers back to the respondents will be impossible. By filling in and submitting the survey, you are providing implied consent to participate in the study. However, if at some point during the survey you want to stop, you are free to do so and your partial answers will be discarded. Should you have further privacy concerns, please review the details of the ethics protocol for this research available at http://collab.di.uniba.it:8000/mini-IPIP/privacy or contact us by email.
+All survey responses will be stored on a secure server in our University data center. We will openly publish the results so everyone can benefit from them, but we will anonymize and/or present them in aggregate so that tracking answers back to the respondents will be impossible. By filling in and submitting the survey, you are providing implied consent to participate in the study. However, if at some point during the survey you want to stop, you are free to do so and your partial answers will be discarded. Should you have further privacy concerns, please review the details of the ethics protocol for this research available at http://collab.di.uniba.it:8000/privacy or contact us by email.
 
 We appreciate your participation. Thank you for taking the time for reading this email.
 
